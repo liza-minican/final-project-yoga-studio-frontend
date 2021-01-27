@@ -12,25 +12,17 @@ export const NavBar = () => {
   //const [hidden, setHidden] = useState(true);
 
   return (
-    <nav>
+    <Navbar>
       <Link to="/">
         <Logo src={lotus} alt="yoga pose icon" />
       </Link>
-      <ul>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/videos">Videos</Link>
-        </li>
-        <li>
-          <Link to="/sessions">Log in</Link>
-        </li>
-        <li>
-          <Link to="/users">Sign up</Link>
-        </li>
-      </ul>
-    </nav>
+      <NavLinks>
+        <Link to="/about">About</Link>
+        <Link to="/videos">Videos</Link>
+        <Link to="/sessions">Log in</Link>
+        <Link to="/users">Sign up</Link>
+      </NavLinks>
+    </Navbar>
     // <Navbar expandSm light>
     //   <Nav start>
     //     <NavbarLink light brand href="#">
@@ -68,4 +60,33 @@ export const NavBar = () => {
 const Logo = styled.img`
   width: 50px;
   height: 50px;
+`;
+const Navbar = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2.5rem;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+`;
+const NavLinks = styled.ul`
+  justify-self: end;
+  list-style-type: none;
+  margin: auto 0;
+  & a {
+    color: grey;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    margin: 0 1.5rem;
+    transition: all 300ms linear 0s;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #fdcb6e;
+      border-bottom: 1px solid #fdcb6e;
+    }
+  }
 `;
