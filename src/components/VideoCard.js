@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 import { Likes } from 'components/Likes.js'
 
 
-export const VideoCard = ({ ...video }) => {
+export const VideoCard = ({ getVideos, ...video }) => {
   return (
     <>
       <p>{video.videoName}</p>
@@ -15,5 +15,5 @@ export const VideoCard = ({ ...video }) => {
       <p>Duration: {video.length} min</p>
     </>
   );
-}
+};
 
