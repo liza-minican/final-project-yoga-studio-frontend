@@ -7,7 +7,7 @@ import styled from "styled-components";
 export const Header = () => {
   return (
     <Navbar
-      className="w-auto p-1 fixed-top"
+      className="w-auto p-3 fixed-top"
       collapseOnSelect
       expand="lg"
       bg="light"
@@ -48,8 +48,8 @@ export const Header = () => {
 };
 
 const Logo = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 `;
 const NavLinks = styled.div`
   justify-self: end;

@@ -29,13 +29,35 @@
 //      </button>
 //    )}
 //  </Provider>;
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { VideoCard } from "components/VideoCard";
 
 export const VideoList = () => {
+
+  const VIDEO_COLLECTION_URL = "http://localhost:8080/videos";
+  
+  const [videoCollection, setVideoCollection] = useState([])
+  
+   const getVideos = () => {
+     fetch(VIDEO_COLLECTION_URL)
+       .then((res) => res.json())
+       .then((json) => setVideoCollection(json))
+       .catch((err) => console.log(err));
+   };
+  
+     useEffect(getVideos, []);
+
   return (
     <>
-      <h1>Videos</h1>
-      <p>Some text about our cool videos</p>
+      <h1>Video collection</h1>
+      <p>Enjoy our picked colecction and get stronger every day!</p>
+      {videoCollection.map(video => {
+        return <VideoCard
+        key = {video._id}
+        {...video}
+        />
+        })
+      }
     </>
   );
 };
