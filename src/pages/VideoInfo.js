@@ -27,11 +27,64 @@ export const VideoInfo = () => {
   
   return (
     <>
-      <article>
+      <Wrapper>
         <p>{videoInfo.videoName}</p>
         <ReactPlayer url={`${videoInfo.videoUrl}`} alt={videoInfo.videoName} />
         <p>{videoInfo.description}</p>
-      </article>
+      </Wrapper>
     </>
   );
 };
+
+const Wrapper = styled.div`
+display:flex
+`
+
+// .movie-details-container {
+//   position: absolute;
+//   display: flex;
+//   align-items: flex-end;
+//   left: 50px;
+//   bottom: 50px;
+// }
+// .movie-details-backdrop-image {
+//   width: 100vw;
+//   height: 100vh;
+//   object-fit: cover;
+//   margin-bottom: -4px;
+//   filter: brightness(65%);
+// }
+
+// .movie-details-poster {
+//   width: 350px;
+//   border: 5px solid #fff;
+// }
+
+// .movie-details-information {
+//   margin: 20px;
+//   max-width: 450px;
+//   color: #fff;
+// }
+// .vote-red {
+//   margin-left: 10px;
+//   color: red;
+//   font-weight: 400;
+//   font-size: 20px;
+// }
+
+// @media (min-width: 768px) and (max-width: 1023px) {
+//   .movie-details-poster {
+//     width: 250px;
+//   }
+//   .movie-details-information {
+//     width: 350px;
+//   }
+// }
+// @media (max-width: 767px) {
+//   .movie-details-poster {
+//     display: none;
+//   }
+//   .movie-details-information {
+//     width: 250px;
+//   }
+// }
