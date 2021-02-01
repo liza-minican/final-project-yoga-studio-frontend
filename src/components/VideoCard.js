@@ -1,63 +1,53 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import { Likes } from "components/Likes.js";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
 export const VideoCard = ({ getVideos, ...video }) => {
   return (
     <>
-      <Card>
-        <Text>{video.videoName}</Text>
+      <Link to={`/videos/${video._id}`}>
         <Video>
           <ReactPlayer url={`${video.videoUrl}`} alt={video.videoName} />
-        </Video>
-        <Likes likes={video.likes} id={video._id} getVideos={getVideos} />
-        {/* <p>{video.description}</p> */}
-        <Info>
+          <Text>{video.videoName}</Text>
+          <Likes likes={video.likes} id={video._id} getVideos={getVideos} />
+          {/* <p>{video.description}</p> */}
           <Text1>Category: {video.category}</Text1>
           <Text1>Duration: {video.length} min</Text1>
-        </Info>
-      </Card>
+        </Video>
+      </Link>
     </>
   );
 };
 
-const Card = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  //position: relative;
-  width: 25%;
-  height: auto;
-  margin: 20px;
-  //transition: opacity 0.2s, visibility 0.2s;
-  @media (min-width: 768px) and (max-width: 1023px) {
-    width: 50%;
-  }
-  @media (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
 const Video = styled.div`
+  overflow: hidden;
+  position: relative;
   width: 100%;
+
+  after {
+    padding-top: 56.25%;
+    display: block;
+    content: "";
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+  }
 `;
 
-const Info = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 10px;
-  justify-content: space-between;
-`;
 const Text = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
 `;
 
 const Text1 = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  margin: 10px;
 `;

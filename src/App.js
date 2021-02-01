@@ -1,9 +1,9 @@
 
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Header } from "components/Header.js";
-
 import { Home } from "./pages/Home.js";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
@@ -13,6 +13,7 @@ import { About } from "./pages/About";
 
 
 export const App = () => {
+  let history = useHistory();
   return (
     <>
       <BrowserRouter>

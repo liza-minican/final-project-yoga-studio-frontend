@@ -24,7 +24,7 @@ export const VideoInfo = () => {
 
   useEffect(getVideoInfo, []);
   console.log(getVideoInfo);
-  
+
   return (
     <>
       <Wrapper>

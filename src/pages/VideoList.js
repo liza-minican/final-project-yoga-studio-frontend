@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import styled from "styled-components";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+//import styled from "styled-components";
 
 import { VideoCard } from "components/VideoCard";
 
@@ -24,19 +28,17 @@ export const VideoList = () => {
       <p>
         Enjoy our cherry picked video colecction and get stronger every day!
       </p>
-      <Wrapper>
-        {videoCollection.map((video) => {
-          return <VideoCard key={video._id} {...video} getVideos={getVideos} />;
-        })}
-      </Wrapper>
+      <Container>
+        <Row>
+          {videoCollection.map((video) => {
+            return (
+              <Col xs="12" sm="12" md="6" lg="4" xl="4">
+                <VideoCard key={video._id} {...video} getVideos={getVideos} />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     </>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0;
-`;
