@@ -31,11 +31,11 @@ export const user = createSlice({
       state.login.name = name;
     },
 
-    setSecret: (state, action) => {
-      const { secretMessage } = action.payload;
-      console.log(` Secret Message: ${secretMessage}`);
-      state.login.secretMessage = secretMessage;
-    },
+    // setSecret: (state, action) => {
+    //   const { secretMessage } = action.payload;
+    //   console.log(` Secret Message: ${secretMessage}`);
+    //   state.login.secretMessage = secretMessage;
+    // },
 
     logout: (state, action) => {
       console.log("Logging out");
