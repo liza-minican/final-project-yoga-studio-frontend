@@ -44,9 +44,11 @@ export const SignUp = () => {
           user.actions.setAccessToken({ accessToken: json.accessToken })
         );
         setSignUpSuccess(true);
+        dispatch(user.actions.toggleLoggedState(true));
       })
       .catch(() => {
         setSignUpFailed(true);
+        dispatch(user.actions.toggleLoggedState(false));
       })
       .finally(() => {
         setUserName("");

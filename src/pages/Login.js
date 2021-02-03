@@ -40,9 +40,11 @@ export const Login = () => {
           user.actions.setAccessToken({ accessToken: json.accessToken })
         );
         setLogInSuccess(true);
+        dispatch(user.actions.toggleLoggedState(true));
       })
       .catch(() => {
         setLogInFailed(true);
+        dispatch(user.actions.toggleLoggedState(false));
       })
       .finally(() => {
         setEmail("");

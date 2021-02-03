@@ -9,6 +9,9 @@ const initialState = {
     secretMessage: "",
     loggedIn: false,
   },
+  userActions: {
+    favoriteVideos: []
+  }
 };
 
 export const user = createSlice({
@@ -30,12 +33,13 @@ export const user = createSlice({
       console.log(`Name: ${name}`);
       state.login.name = name;
     },
+    setFavoriteVideos: (store, action) => {
+      store.userActions.favoriteVideos = action.payload
+    },
 
-    // setSecret: (state, action) => {
-    //   const { secretMessage } = action.payload;
-    //   console.log(` Secret Message: ${secretMessage}`);
-    //   state.login.secretMessage = secretMessage;
-    // },
+    toggleLoggedState: (state, action) => {
+      state.login.loggedIn = action.payload;
+    },
 
     logout: (state, action) => {
       console.log("Logging out");
@@ -44,8 +48,8 @@ export const user = createSlice({
       state.login.name = "";
       state.login.accessToken = null;
       state.login.secretMessage = "";
-    },
-  },
+    }
+  }
 });
 
 /// THUNKS

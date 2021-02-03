@@ -3,21 +3,38 @@ import ReactPlayer from "react-player";
 import { Likes } from "components/Likes.js";
 import { Link } from "react-router-dom";
 
+
+import { user } from "../reducers/user";
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 
 export const VideoCard = ({ getVideos, ...video }) => {
+  //const accessToken = useSelector((store) => store.user.login.accessToken);
+  const loggedIn = useSelector((store) => store.user.login.loggedIn);
+
   return (
     <>
-      <Link to={`/videos/${video._id}`}>
-        <Video>
-          <ReactPlayer url={`${video.videoUrl}`} alt={video.videoName} />
-          <Text>{video.videoName}</Text>
-          <Likes likes={video.likes} id={video._id} getVideos={getVideos} />
-          {/* <p>{video.description}</p> */}
-          <Text1>Category: {video.category}</Text1>
-          <Text1>Duration: {video.length} min</Text1>
-        </Video>
-      </Link>
+      {loggedIn === true ? (
+        <Link to={`/videos/${video._id}`}>
+          <Video>
+            <ReactPlayer url={`${video.videoUrl}`} alt={video.videoName} />
+            <Text>{video.videoName}</Text>
+            <Likes likes={video.likes} id={video._id} getVideos={getVideos} />
+            <Text1>Category: {video.category}</Text1>
+            <Text1>Duration: {video.length} min</Text1>
+          </Video>
+        </Link>
+      ) : (
+        <Link to={`/videos/${video._id}`}>
+          <Video>
+            <ReactPlayer url={`${video.videoUrl}`} alt={video.videoName} />
+            <Text>{video.videoName}</Text>
+            <Text1>Category: {video.category}</Text1>
+            <Text1>Duration: {video.length} min</Text1>
+          </Video>
+        </Link>
+      )}
     </>
   );
 };
