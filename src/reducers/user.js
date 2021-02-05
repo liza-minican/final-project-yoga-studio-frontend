@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   login: {
-    accessToken: null,
+    accessToken: localStorage.validToken || null,
     userId: 0,
     name: "",
     email: "",
@@ -10,8 +10,8 @@ const initialState = {
     loggedIn: false,
   },
   userActions: {
-    favoriteVideos: []
-  }
+    favoriteVideos: [],
+  },
 };
 
 export const user = createSlice({
@@ -22,7 +22,9 @@ export const user = createSlice({
       const { accessToken } = action.payload;
       console.log(`Access Token: ${accessToken}`);
       state.login.accessToken = accessToken;
+      localStorage.setItem("validToken", accessToken);
     },
+
     setUserId: (state, action) => {
       const { userId } = action.payload;
       console.log(`User Id: ${userId}`);
@@ -34,7 +36,7 @@ export const user = createSlice({
       state.login.name = name;
     },
     setFavoriteVideos: (store, action) => {
-      store.userActions.favoriteVideos = action.payload
+      store.userActions.favoriteVideos = action.payload;
     },
 
     toggleLoggedState: (state, action) => {
@@ -48,8 +50,8 @@ export const user = createSlice({
       state.login.name = "";
       state.login.accessToken = null;
       state.login.secretMessage = "";
-    }
-  }
+    },
+  },
 });
 
 /// THUNKS
@@ -68,7 +70,7 @@ export const user = createSlice({
 //add setVideoCOllection globally
 //check survey project
 
-// Vanessa's THUNKS
+// Examples THUNKS
 // export const getSecretMessage = (userId, accessToken) => {
 //   return (dispatch) => {
 //     fetch(`https://project-auth-vane-axel.herokuapp.com/users/${userId}/secret`, {

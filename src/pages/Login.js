@@ -18,6 +18,7 @@ export const Login = () => {
   const [logInFailed, setLogInFailed] = useState(false);
   const [logInSuccess, setLogInSuccess] = useState(false);
 
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     fetch(LOGIN, {
@@ -36,9 +37,8 @@ export const Login = () => {
       })
       .then((json) => {
         dispatch(user.actions.setUserId({ userId: json.userId }));
-        dispatch(
-          user.actions.setAccessToken({ accessToken: json.accessToken })
-        );
+        // localStorage.setItem("superToken", loginResponse.accessToken);
+        dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }));
         setLogInSuccess(true);
         dispatch(user.actions.toggleLoggedState(true));
       })

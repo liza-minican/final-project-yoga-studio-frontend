@@ -8,10 +8,11 @@ export const Likes = ({ getVideos, id }) => {
   const dispatch = useDispatch();
   const userId = useSelector((store) => store.user.login.userId);
   const accessToken = useSelector((store) => store.user.login.loggedIn);
-  const URL_FAVORITE = `http://localhost:8080//users/${userId}/favorites/${id}`;
- 
+  const URL_FAVORITE = `http://localhost:8080/users/${userId}/favorites/${id}`;
 
   const postLike = () => {
+    console.log(userId);
+    console.log(id);
     fetch(URL_FAVORITE, {
       method: "PUT",
       /// should i add token authorization here?
@@ -29,7 +30,6 @@ export const Likes = ({ getVideos, id }) => {
         dispatch(user.actions.setFavoriteVideos(json));
       });
   };
- 
 
   //then(() => getVideos());
   return (

@@ -12,7 +12,7 @@ import styled from "styled-components";
 export const VideoCard = ({ getVideos, ...video }) => {
   //const accessToken = useSelector((store) => store.user.login.accessToken);
   const loggedIn = useSelector((store) => store.user.login.loggedIn);
-
+console.log(getVideos);
   return (
     <>
       {loggedIn === true ? (
