@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { videos } from "../reducers/videos";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,13 +12,32 @@ import { VideoCard } from "components/VideoCard";
 
 export const VideoList = () => {
   const VIDEO_COLLECTION_URL = "http://localhost:8080/videos";
-
+  const dispatch = useDispatch();
   const [videoCollection, setVideoCollection] = useState([]);
+
+  // const getVideos = () => {
+  //   fetch(VIDEO_COLLECTION_URL)
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       dispatch(videos.actions.setVideos(json));
+  //       setVideoCollection(json);
+  //     });
+  // };
+
+  //   const getVideos = () => {
+  //   fetch(VIDEO_COLLECTION_URL)
+  //     .then((res) => res.json())
+  //     .then((json) => setVideoCollection(json))
+  //     .catch((err) => console.log(err));
+  // };
 
   const getVideos = () => {
     fetch(VIDEO_COLLECTION_URL)
       .then((res) => res.json())
       .then((json) => setVideoCollection(json))
+      //instead of videos there should be json?
+      //dispatch(videos.actions.setVideos({videos: json.videos}))
+      //)
       .catch((err) => console.log(err));
   };
 

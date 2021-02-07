@@ -3,11 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   login: {
     accessToken: localStorage.validToken || null,
-    userId: 0,
-    name: "",
-    email: "",
-    secretMessage: "",
-    loggedIn: false,
+    userId: localStorage.userId || 0,
+    userName: localStorage.userName || "",
+    email: localStorage.email || "",
+    loggedIn: localStorage.loggedIn || false,
   },
   userActions: {
     favoriteVideos: [],
@@ -29,11 +28,13 @@ export const user = createSlice({
       const { userId } = action.payload;
       console.log(`User Id: ${userId}`);
       state.login.userId = userId;
+      localStorage.setItem("userId", userId);
     },
-    setName: (state, action) => {
-      const { name } = action.payload;
-      console.log(`Name: ${name}`);
-      state.login.name = name;
+    setUserName: (state, action) => {
+      const { userName } = action.payload;
+      console.log(`Name: ${userName}`);
+      state.login.name = userName;
+      localStorage.setItem("userName", userName);
     },
     setFavoriteVideos: (store, action) => {
       store.userActions.favoriteVideos = action.payload;
@@ -47,74 +48,16 @@ export const user = createSlice({
       console.log("Logging out");
       state.login.userId = 0;
       state.login.email = "";
-      state.login.name = "";
+      state.login.userName = "";
       state.login.accessToken = null;
-      state.login.secretMessage = "";
+      localStorage.clear();
     },
   },
 });
 
-/// THUNKS
-
-// const getVideos = () => {
-//   const VIDEO_COLLECTION_URL = "http://localhost:8080/videos";
-//   fetch(VIDEO_COLLECTION_URL)
-//     .then((res) => res.json())
-//     .then((json) => setVideoCollection(json))
-//     .catch((err) => console.log(err));
-// };
-
-// useEffect(getVideos, []);
-
 //check APP add provider
 //add setVideoCOllection globally
 //check survey project
-
-// Examples THUNKS
-// export const getSecretMessage = (userId, accessToken) => {
-//   return (dispatch) => {
-//     fetch(`https://project-auth-vane-axel.herokuapp.com/users/${userId}/secret`, {
-//       method: 'GET',
-//       headers: { Authorization: accessToken }
-//     })
-//       .then((res) => {
-//         if (!res.ok) {
-//           throw new Error('Could not get information, please make sure you are logged in.');
-//         }
-//         return res.json();
-//       })
-//       .then((json) => {
-//         dispatch(user.actions.setSecretMessage({ secretMessage: json.secretMessage }));
-//       })
-//       .catch((error) => {
-//         dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }));
-//       });
-//   };
-// };
-
-// export const login = (name, password) => {
-//   return (dispatch) => {
-//     fetch('https://project-auth-vane-axel.herokuapp.com/sessions', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ name, password })
-//     })
-//       .then((res) => {
-//         if (!res.ok) {
-//           throw new Error('Unable to log in, please check your username and password.');
-//         } else {
-//           return res.json();
-//         }
-//       })
-//       .then((json) => {
-//         dispatch(user.actions.setUserId({ userId: json.userId }));
-//         dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }));
-//       })
-//       .catch((error) => {
-//         dispatch(user.actions.setErrorMessage({ errorMessage: error.toString() }));
-//       });
-//   };
-// };
 
 // export const logout = () => {
 //   return (dispatch) => {

@@ -18,6 +18,21 @@ export const Login = () => {
   const [logInFailed, setLogInFailed] = useState(false);
   const [logInSuccess, setLogInSuccess] = useState(false);
 
+  const handleLoginSuccess = (loginResponse) => {
+    localStorage.setItem("validToken", loginResponse.accessToken);
+    dispatch(
+      user.actions.setAccessToken({ accessToken: loginResponse.accessToken })
+    );
+    dispatch(user.actions.setUserId({ userId: loginResponse.userId }));
+    setLogInSuccess(true);
+    dispatch(user.actions.toggleLoggedState(true));
+  };
+
+  const handleLoginFailed = () => {
+    dispatch(user.actions.setAccessToken({ accessToken: null }));
+    dispatch(user.actions.toggleLoggedState(false));
+    setLogInFailed(true);
+  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -35,17 +50,8 @@ export const Login = () => {
         }
         return res.json();
       })
-      .then((json) => {
-        dispatch(user.actions.setUserId({ userId: json.userId }));
-        // localStorage.setItem("superToken", loginResponse.accessToken);
-        dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }));
-        setLogInSuccess(true);
-        dispatch(user.actions.toggleLoggedState(true));
-      })
-      .catch(() => {
-        setLogInFailed(true);
-        dispatch(user.actions.toggleLoggedState(false));
-      })
+      .then((json) => handleLoginSuccess(json))
+      .catch((err) => handleLoginFailed(err))
       .finally(() => {
         setEmail("");
         setPassword("");
@@ -124,7 +130,7 @@ const Form = styled.form`
     margin-bottom: 10px;
   }
 `;
-const Text = styled.text`
+const Text = styled.p`
   display: flex;
   padding: 10px;
   font-size: 20px;

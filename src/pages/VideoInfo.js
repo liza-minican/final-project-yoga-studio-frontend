@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -27,6 +28,12 @@ export const VideoInfo = () => {
 
   return (
     <>
+      <Link to="/videos" exact="true">
+        <div className="back-arrow-text">
+          {/* <img className="arrow" src={arrow} alt="back-arrow" /> */}
+          <p className="back-movies-text">Back to Videos</p>
+        </div>
+      </Link>
       <Wrapper>
         <p>{videoInfo.videoName}</p>
         <ReactPlayer url={`${videoInfo.videoUrl}`} alt={videoInfo.videoName} />

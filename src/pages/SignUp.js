@@ -21,6 +21,22 @@ export const SignUp = () => {
   const [signUpFailed, setSignUpFailed] = useState(false);
   const [signUpSuccess, setSignUpSuccess] = useState(false);
 
+  const handleSignUpSuccess = (loginResponse) => {
+    localStorage.setItem("validToken", loginResponse.accessToken);
+    dispatch(
+      user.actions.setAccessToken({ accessToken: loginResponse.accessToken })
+    );
+    dispatch(user.actions.setUserId({ userId: loginResponse.userId }));
+    setSignUpSuccess(true);
+    dispatch(user.actions.toggleLoggedState(true));
+  };
+
+  const handleSignUpFailed = () => {
+    dispatch(user.actions.setAccessToken({ accessToken: null }));
+    dispatch(user.actions.toggleLoggedState(false));
+    setSignUpFailed(true);
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     fetch(SIGNUP, {
@@ -38,18 +54,8 @@ export const SignUp = () => {
         }
         return res.json();
       })
-      .then((json) => {
-        dispatch(user.actions.setUserId({ userId: json.userId }));
-        dispatch(
-          user.actions.setAccessToken({ accessToken: json.accessToken })
-        );
-        setSignUpSuccess(true);
-        dispatch(user.actions.toggleLoggedState(true));
-      })
-      .catch(() => {
-        setSignUpFailed(true);
-        dispatch(user.actions.toggleLoggedState(false));
-      })
+      .then((json) => handleSignUpSuccess(json))
+      .catch((err) => handleSignUpFailed(err))
       .finally(() => {
         setUserName("");
         setEmail("");
@@ -101,7 +107,8 @@ export const SignUp = () => {
             <SubmitButton title="Sign up" />
           </Form>
         </Image>
-      )} ;
+      )}{" "}
+      ;
     </>
   );
 };

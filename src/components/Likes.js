@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 export const Likes = ({ getVideos, id }) => {
   const dispatch = useDispatch();
   const userId = useSelector((store) => store.user.login.userId);
-  const accessToken = useSelector((store) => store.user.login.loggedIn);
+  const accessToken = useSelector((store) => store.user.login.accessToken);
   const URL_FAVORITE = `http://localhost:8080/users/${userId}/favorites/${id}`;
 
   const postLike = () => {
@@ -28,14 +28,16 @@ export const Likes = ({ getVideos, id }) => {
       })
       .then((json) => {
         dispatch(user.actions.setFavoriteVideos(json));
+        //getVideos();
       });
   };
 
   //then(() => getVideos());
   return (
     <>
-      <WrapperLikes className="likes">
+      <WrapperLikes>
         <Button onClick={postLike}>Add</Button>
+        <Button onClick={postLike}>Remove</Button>
       </WrapperLikes>
     </>
   );
@@ -79,20 +81,62 @@ export const Likes = ({ getVideos, id }) => {
 //     </>
 //   );
 // };
+// import React, { useState, useEffect } from "react";
+
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+
+// //import styled from "styled-components";
+
+// import { VideoCard } from "components/VideoCard";
+
+// export const FavoriteVideos = () => {
+//   //made up url????
+//   const FAVORITE_VIDEO_COLLECTION_URL = "http://localhost:8080/users/id/videos/id";
+
+//   const [videoCollection, setVideoCollection] = useState([]);
+
+//   const getVideos = () => {
+//     fetch(FAVORITE_VIDEO_COLLECTION_URL)
+//       .then((res) => res.json())
+//       .then((json) => setVideoCollection(json))
+//       .catch((err) => console.log(err));
+//   };
+
+//   useEffect(getVideos, []);
+
+//   return (
+//     <>
+//       <h1>Your favourite Video collection</h1>>
+//       <Container>
+//         <Row>
+//           {videoCollection.map((video) => {
+//             return (
+//               <Col xs="12" sm="12" md="6" lg="4" xl="4">
+//                 <VideoCard key={video._id} {...video} getVideos={getVideos} />
+//               </Col>
+//             );
+//           })}
+//         </Row>
+//       </Container>
+//     </>
+//   );
+// };
 
 const WrapperLikes = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+    display: flex;
+    justify-content: space-around;
+}
 `;
 const Button = styled.button`
   //   //dont know how to write this in a coreect way
   background: "blue";
   border: none;
-  border-radius: 50%;
+  //border-radius:50% ;
   width: 20px;
   height: 20px;
-  margin-right: 4px;
+  margin-right: 14px;
   display: flex;
   justify-content: center;
   */ & hover {

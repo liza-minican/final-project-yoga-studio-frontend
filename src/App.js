@@ -1,11 +1,9 @@
 
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-import { user } from "./reducers/user";
 import { Header } from "components/Header.js";
 import { Home } from "./pages/Home.js";
 import { Login } from "./pages/Login";
@@ -14,11 +12,13 @@ import { VideoList } from "./pages/VideoList";
 import { VideoInfo } from "./pages/VideoInfo";
 import { About } from "./pages/About";
 
+import { user } from "./reducers/user";
+
 const reducer = combineReducers({ user: user.reducer });
 const store = configureStore({ reducer });
 
 export const App = () => {
-  let history = useHistory();
+
   return (
     <>
       <Provider store={store}>

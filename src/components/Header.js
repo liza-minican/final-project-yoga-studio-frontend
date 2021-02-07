@@ -3,8 +3,12 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import lotus from "assets/lotus.png";
 import styled from "styled-components";
+import { user } from "reducers/user";
+import { Logout } from "./Logout";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
+  const accessToken = useSelector((store) => store.user.login.accessToken);
   return (
     <Navbar
       className="w-auto p-3 fixed-top"
@@ -34,12 +38,22 @@ export const Header = () => {
             <Nav.Link as={Link} to="/videos">
               Videos
             </Nav.Link>
-            <Nav.Link as={Link} to="/sessions">
-              Log in
-            </Nav.Link>
-            <Nav.Link as={Link} to="/users">
-              Sign up
-            </Nav.Link>
+            {accessToken && (
+              <>
+                <p>name</p>
+                  <Logout />
+              </>
+            )}
+            {!accessToken && (
+              <>
+                <Nav.Link as={Link} to="/sessions">
+                  Log in
+                </Nav.Link>
+                <Nav.Link as={Link} to="/users">
+                  Sign up
+                </Nav.Link>
+              </>
+            )}
           </NavLinks>
         </Nav>
       </Navbar.Collapse>

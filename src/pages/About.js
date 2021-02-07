@@ -11,7 +11,7 @@
 // };
 import React from "react";
 import { Card, Button, CardDeck, CardImg } from "react-bootstrap";
-import ReactPlayer from "react-player";
+
 import yoga_image1 from "assets/image_background3.jpg"
 
 export const About = ({ getVideos, ...video }) => {
