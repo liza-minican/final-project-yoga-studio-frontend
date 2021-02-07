@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken);
+  const userName = useSelector((store) => store.user.login.userName);
+  //console.log(userName);
+  //const user = JSON.parse(localStorage.getItem("userName"));
+
   return (
     <Navbar
       className="w-auto p-3 fixed-top"
@@ -40,8 +44,8 @@ export const Header = () => {
             </Nav.Link>
             {accessToken && (
               <>
-                <p>name</p>
-                  <Logout />
+                <p>{userName}</p>
+                <Logout />
               </>
             )}
             {!accessToken && (

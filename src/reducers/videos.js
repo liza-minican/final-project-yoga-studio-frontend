@@ -1,18 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  //   //videos: JSON.parse(localStorage.getItem("videos")) || []
-  videos: [],
+  //videos: JSON.parse(localStorage.getItem("videos")) || [],
+  videos: localStorage.videos || [],
 };
-export const videos = createSlice({
-  name: "videos",
+export const collection = createSlice({
+  name: "collection",
   initialState,
   reducers: {
     setVideos: (store, action) => {
-      store.videos = action.payload;
-
-      //       localStorage.setItem("videos", JSON.stringify(store.videos));
-      //       console.log(store.videos);
-    },
-  },
+       const { videos } = action.payload;
+      //store.videos = action.payload;
+      localStorage.setItem("videos", videos);
+      // localStorage.setItem("videos", JSON.stringify(store.videos));
+      //console.log(store.videos);
+    }
+  }
 });

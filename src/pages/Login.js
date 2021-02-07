@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import { SubmitButton } from "components/SubmitButton";
 import { InputField } from "components/InputField";
 import { UserProfile } from "./UserProfile";
 import { user } from "../reducers/user";
+import loginImage from "assets/login.jpg";
 
 import styled from "styled-components";
 import { rgba } from "polished";
@@ -63,71 +68,87 @@ export const Login = () => {
       {logInSuccess === true ? (
         <UserProfile />
       ) : (
-        <Image>
-          <Form onSubmit={handleFormSubmit}>
-            <Text>Log in</Text>
-            <InputField
-              name="email"
-              label="Email"
-              type="email"
-              value={email}
-              placeholder="email"
-              onChange={(event) => setEmail(event.target.value)}
-              minLength="3"
-            />
-            <InputField
-              name="password"
-              label="Password"
-              type="password"
-              value={password}
-              placeholder="password"
-              onChange={(event) => setPassword(event.target.value)}
-              minLength="6"
-            />
-            {logInFailed && (
-              <span>
-                <Text>
-                  Failed to log in. Email and/or password incorrect. Please try
-                  again.
-                </Text>
-              </span>
-            )}
-            <SubmitButton title="Log in" />
-          </Form>
-        </Image>
+        <Container>
+          <Row>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <Form onSubmit={handleFormSubmit}>
+                <Text>Log in</Text>
+                <InputField
+                  name="email"
+                  label="Email"
+                  type="email"
+                  value={email}
+                  placeholder="email"
+                  onChange={(event) => setEmail(event.target.value)}
+                  minLength="3"
+                />
+                <InputField
+                  name="password"
+                  label="Password"
+                  type="password"
+                  value={password}
+                  placeholder="password"
+                  onChange={(event) => setPassword(event.target.value)}
+                  minLength="6"
+                />
+                {logInFailed && (
+                  <span>
+                    <Text>
+                      Failed to log in. Email and/or password incorrect. Please
+                      try again.
+                    </Text>
+                  </span>
+                )}
+                <SubmitButton title="Log in" />
+              </Form>
+            </Col>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <Image src={loginImage} alt="yoga-girl" />
+            </Col>
+          </Row>
+        </Container>
       )}
       ;
     </>
   );
 };
 
-const Image = styled.main`
-  background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
+// const Image = styled.main`
+//   //background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
+//   position: fixed;
+//   width: 100%;
+//   height: 100%;
+//   background-size: cover;
+// `;
+
+const Image = styled.img`
+  width: 500px;
+  height: auto;
 `;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 80%;
   margin-bottom: 30px;
   margin: 100px auto;
   align-items: center;
   justify-content: center;
   padding: 5px;
-  border-radius: 5px;
-  background-color: ${rgba("#a1bdc8", 0.5)};
+  border-radius: none;
+  background-color: whitesmoke;
+  //background-color: ${rgba("#a1bdc8", 0.5)};
   @media (max-width: 950px) {
     margin: 30px auto;
-    width: 60%;
-    margin-bottom: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
   }
   @media (max-width: 660px) {
     margin: 30px auto;
-    width: 60%;
-    margin-bottom: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
   }
 `;
 const Text = styled.p`
@@ -135,7 +156,7 @@ const Text = styled.p`
   padding: 10px;
   font-size: 20px;
   flex-direction: column;
-  color: #a73e42;
+  color: black;
   font-weight: bold;
   font-family: "Xanh Mono", monospace;
   align-items: center;

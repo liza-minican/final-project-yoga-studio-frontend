@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { videos } from "../reducers/videos";
-
+//import { getVideos } from "reducers/videos";
+//import { useSelector } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -14,7 +14,12 @@ export const VideoList = () => {
   const VIDEO_COLLECTION_URL = "http://localhost:8080/videos";
   const dispatch = useDispatch();
   const [videoCollection, setVideoCollection] = useState([]);
-
+  
+  
+  
+  //dispatch does not work in the fetc h and I cant use localstorage somehow as well
+  
+  //const videos = useSelector((store) => store.videos.videos);
   // const getVideos = () => {
   //   fetch(VIDEO_COLLECTION_URL)
   //     .then((res) => res.json())
@@ -24,22 +29,12 @@ export const VideoList = () => {
   //     });
   // };
 
-  //   const getVideos = () => {
-  //   fetch(VIDEO_COLLECTION_URL)
-  //     .then((res) => res.json())
-  //     .then((json) => setVideoCollection(json))
-  //     .catch((err) => console.log(err));
-  // };
-
-  const getVideos = () => {
+    const getVideos = () => {
     fetch(VIDEO_COLLECTION_URL)
       .then((res) => res.json())
       .then((json) => setVideoCollection(json))
-      //instead of videos there should be json?
-      //dispatch(videos.actions.setVideos({videos: json.videos}))
-      //)
       .catch((err) => console.log(err));
-  };
+    }
 
   useEffect(getVideos, []);
 

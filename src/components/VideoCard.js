@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import { Likes } from "components/Likes.js";
 import { Link } from "react-router-dom";
 
-import { user } from "../reducers/user";
+//import { user } from "../reducers/user";
 import { useSelector } from "react-redux";
 
 import styled from "styled-components";

@@ -15,11 +15,12 @@ const MainContainer = styled.button`
 	align-items: center;
 	justify-content: center;
 	width: 30%;
-	background-color: #8a383e;
+	background-color: lightsalmon;
 	border: none;
 	margin: 8px auto;
+  
 	  &:hover {
-		background: #ac8b96;
+		background: lightsalmon;
 		cursor: pointer;
 		transition: ease-in-out .3s;
 	  }
@@ -38,7 +39,7 @@ const TextField = styled.p`
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  color: #a8c5cd;
+  color: black;
   &:hover {
     color: #d2c5ab;
   }
