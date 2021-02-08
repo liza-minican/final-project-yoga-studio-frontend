@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+// import React, { useState, useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { Link } from "react-router-dom";
 
-import { user } from "reducers/user";
-import styled from "styled-components";
+// import { user } from "reducers/user";
+// import styled from "styled-components";
 
-export const Logout = () => {
-  const [loggedOut, setLoggedOut] = useState(false);
-  const accessToken = useSelector((store) => store.user.login.accessToken);
-  const userId = useSelector((store) => store.user.login.userId);
-  const dispatch = useDispatch();
+// export const Logout = () => {
+//   const [loggedOut, setLoggedOut] = useState(false);
+//   const accessToken = useSelector((store) => store.user.login.accessToken);
+//   const userId = useSelector((store) => store.user.login.userId);
+//   const dispatch = useDispatch();
 
   // const LOGOUT_URL = "http://localhost:8080/users/logout";
 
@@ -28,22 +28,22 @@ export const Logout = () => {
   // };
   // useEffect(handleLogOut, []);
 
-  const handleLogOut = () => {
-    dispatch(user.actions.logout());
-    setLoggedOut(true);
-  };
-  return (
-    <>
-      {loggedOut === false ? (
-        <Link to="/" type="submit" onClick={handleLogOut}>
-          Logout
-        </Link>
-      ) : (
-        <></>
-      )}
-    </>
-  );
-};
+  // const handleLogOut = () => {
+  //   dispatch(user.actions.logout());
+  //   setLoggedOut(true);
+  // };
+//   return (
+//     <>
+//       {loggedOut === false ? (
+//         <button onClick={handleLogOut}>
+//           Logout
+//         </button>
+//       ) : (
+//         <></>
+//       )}
+//     </>
+//   );
+// };
 
 // const LogOutButton = styled.button`
 //   background: inherit;

@@ -137,7 +137,6 @@ const Form = styled.form`
   padding: 5px;
   border-radius: none;
   background-color: whitesmoke;
-  //background-color: ${rgba("#a1bdc8", 0.5)};
   @media (max-width: 950px) {
     margin: 30px auto;
     width: 80%;

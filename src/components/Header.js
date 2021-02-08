@@ -10,6 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 export const Header = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const userName = useSelector((store) => store.user.login.userName);
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+      dispatch(user.actions.logout());
+    };
   //console.log(userName);
   //const user = JSON.parse(localStorage.getItem("userName"));
 
@@ -44,9 +49,11 @@ export const Header = () => {
             </Nav.Link>
             {accessToken && (
               <>
-                <p>{userName}</p>
-                <Logout />
-              </>
+              <Nav.Link as={Link} to="/" onClick={handleLogOut}>
+              Logout
+              </Nav.Link>
+              <Text>name</Text>
+            </>
             )}
             {!accessToken && (
               <>
@@ -96,6 +103,10 @@ const NavLinks = styled.div`
       }
     }
   }
+`;
+
+const Text = styled.p`
+  color: grey;
 `;
 
 const StyledHamburger = styled(Navbar.Toggle)`

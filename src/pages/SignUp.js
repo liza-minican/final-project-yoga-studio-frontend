@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import styled from "styled-components";
 import { rgba } from "polished";
+
+import signup1 from "assets/signup1.jpg";
+import signup2 from "assets/signup2.jpg";
 
 import { user } from "../reducers/user";
 
@@ -68,76 +75,103 @@ export const SignUp = () => {
       {signUpSuccess === true ? (
         <UserProfile />
       ) : (
-        <Image>
-          <Form onSubmit={handleFormSubmit}>
-            <Text>Sign up</Text>
-            <InputField
-              name="name"
-              label="Name"
-              type="name"
-              value={userName}
-              placeholder="name"
-              onChange={(event) => setUserName(event.target.value)}
-              minLength="5"
-            />
-            <InputField
-              name="email"
-              label="Email"
-              type="email"
-              value={email}
-              placeholder="email"
-              onChange={(event) => setEmail(event.target.value)}
-              minLength="3"
-            />
-            <InputField
-              name="password"
-              label="Password"
-              type="password"
-              value={password}
-              placeholder="password"
-              onChange={(event) => setPassword(event.target.value)}
-              minLength="6"
-            />
+        <Container>
+          <Row>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <Form onSubmit={handleFormSubmit}>
+                <Text>Sign up</Text>
+                <InputField
+                  name="name"
+                  label="Name"
+                  type="name"
+                  value={userName}
+                  placeholder="name"
+                  onChange={(event) => setUserName(event.target.value)}
+                  minLength="5"
+                />
+                <InputField
+                  name="email"
+                  label="Email"
+                  type="email"
+                  value={email}
+                  placeholder="email"
+                  onChange={(event) => setEmail(event.target.value)}
+                  minLength="3"
+                />
+                <InputField
+                  name="password"
+                  label="Password"
+                  type="password"
+                  value={password}
+                  placeholder="password"
+                  onChange={(event) => setPassword(event.target.value)}
+                  minLength="6"
+                />
 
-            {signUpFailed && (
-              <span>
-                <Text>Failed to sign up.</Text>
-              </span>
-            )}
-            <SubmitButton title="Sign up" />
-          </Form>
-        </Image>
-      )}{" "}
+                {signUpFailed && (
+                  <span>
+                    <Text>Failed to sign up.</Text>
+                  </span>
+                )}
+                <SubmitButton title="Sign up" />
+              </Form>
+            </Col>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <Image src={signup2} alt="yoga-image" />
+              <Image src={signup1} alt="yoga-image" />
+            </Col>
+          </Row>
+        </Container>
+      )}
       ;
     </>
   );
 };
 
-const Image = styled.main`
-  background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
+// const Image = styled.main`
+//   background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
+//   position: fixed;
+//   width: 100%;
+//   height: 100%;
+//   background-size: cover;
+// `;
+
+const Image = styled.img`
+  width: 400px;
+  height: auto;
+  margin-top: 30px;
 `;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 30%;
-  margin-bottom: 30px;
-  margin: 200px auto;
+  width: 80%;
+  //margin-bottom: 30px;
+  margin: 100px auto;
   align-items: center;
   justify-content: center;
   padding: 5px;
-  border-radius: 5px;
-  background-color: ${rgba("#a1bdc8", 0.5)};
+  border-radius: none;
+  background-color: whitesmoke;
+  @media (max-width: 950px) {
+    margin: 30px auto;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  @media (max-width: 660px) {
+    margin: 30px auto;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
 `;
-const Text = styled.text`
+const Text = styled.p`
   display: flex;
   padding: 10px;
-  font-size: 30px;
+  font-size: 20px;
   flex-direction: column;
-  color: #a73e42;
+  color: black;
   font-weight: bold;
   font-family: "Xanh Mono", monospace;
   align-items: center;
@@ -146,4 +180,12 @@ const Text = styled.text`
   text-transform: uppercase;
   margin-top: 30px;
   letter-spacing: 2px;
+  @media (max-width: 950px) {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+  @media (max-width: 660px) {
+    font-size: 17px;
+    margin-top: 10px;
+  }
 `;

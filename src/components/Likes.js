@@ -13,6 +13,7 @@ export const Likes = ({ getVideos, id }) => {
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const URL_FAVORITE = `http://localhost:8080/users/${userId}/favorites/${id}`;
 
+  //save works
   const handleSave = () => {
     // console.log(userId);
     // console.log(id);
@@ -76,7 +77,7 @@ const WrapperLikes = styled.div`
 }
 `;
 const Button = styled.button`
-  //   //dont know how to write this in a correct way
+  //dont know how to write this in a correct way
   background: "blue";
   border: black;
   //border-radius:50% ;
