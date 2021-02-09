@@ -31,11 +31,10 @@ export const Likes = ({ getFavoriteVideos, id }) => {
           "Could not add video to favorites. User must be logged in."
         );
       })
-      .then(() => {
-        // here we dispatch favorite video collection to the redux store
-        //dispatch(user.actions.setFavoriteVideos(json));
-        // getVideos();
-        getFavoriteVideos(userId, accessToken);
+      .then((json) => {
+        dispatch(user.actions.setFavoriteVideos(json));
+        // dispatch(user.actions.setFavoriteVideos(json)
+        // getFavoriteVideos(userId, accessToken);
       });
   };
 
@@ -56,8 +55,10 @@ export const Likes = ({ getFavoriteVideos, id }) => {
           "Could not remove video from favorites. User must be logged in."
         );
       })
-      .then(() => {
-        getFavoriteVideos(userId, accessToken);
+      .then((json) => {
+        dispatch(user.actions.setFavoriteVideos(json));
+        // dispatch(user.actions.setFavoriteVideos(json)
+        // getFavoriteVideos(userId, accessToken);
       });
   };
 

@@ -42,36 +42,7 @@ p {
 .navbar {
   padding-bottom: 69px;
 }
-.jumbotron-fluid{
-  height:350px;
-  opacity:0.9;
-}
-
-/*Styling for back to movies button*/
-.movie-details-page a {
-  text-decoration: none;
-}
-
-// .arrow {
-//   width: 20px;
-//   margin-right: 10px;
-// }
-
-.back-movies-text {
-  color:black;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 0;
-}
-
-.back-movies-text:hover {
-  margin-left: 10px;
-}
-
-.back-arrow-text {
-  display: flex;
-  height: 20px;
-  padding-top: 15px;
-  margin-left: 15px;
-  margin-bottom: 30px;
+.jumbotron-fluid {
+  height: 350px;
+  opacity: 0.9;
 }

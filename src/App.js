@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -11,6 +10,7 @@ import { SignUp } from "./pages/SignUp";
 import { VideoList } from "./pages/VideoList";
 import { VideoInfo } from "./pages/VideoInfo";
 import { About } from "./pages/About";
+import { UserProfile } from "./pages/UserProfile";
 
 import { user } from "./reducers/user";
 
@@ -18,7 +18,6 @@ const reducer = combineReducers({ user: user.reducer });
 const store = configureStore({ reducer });
 
 export const App = () => {
-
   return (
     <>
       <Provider store={store}>
@@ -44,6 +43,9 @@ export const App = () => {
             </Route>
             <Route path="/about" exact>
               <About />
+            </Route>
+            <Route path="/profile" exact>
+              <UserProfile />
             </Route>
           </Switch>
         </BrowserRouter>

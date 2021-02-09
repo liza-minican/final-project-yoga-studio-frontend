@@ -29,7 +29,6 @@ export const Home = () => {
         <Row>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
             <Image src={bodyicon} alt="yoga-icon" />
-            {/* <Text2>Body</Text2> */}
             <Text2>
               Love your body, get stronger, treat yourself with some sweet
               strechings and toning exercises.
@@ -37,14 +36,12 @@ export const Home = () => {
           </Col>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
             <Image src={brainicon} alt="yoga-icon" />
-            {/* <Text2>Mind</Text2> */}
             <Text2>
               Clear you mind, breath deep, develop focus and let it shine
             </Text2>
           </Col>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
             <Image src={mandalaicon} alt="yoga-icon" />
-            {/* <Text2>Soul</Text2> */}
             <Text2>
               Set yourself free, leave things that don't serve you behind, find
               calmness and joy within you.
@@ -81,28 +78,22 @@ const Text2 = styled.p`
   font-family: "Cantarell", sans-serif;
 `;
 const ButtonWrapper = styled.button`
-    font-size: 22px;
-    font-weight:600;
-    display: inline-block;
-    transition: all 0.4s ease 0s;
-    border: 2px solid black;
-    background-color:transparent;
-    //background-color:#fdffb6;
-    color:black;
-    padding:3px;
-    //margin-top: 20px;
-    //margin-left: 500px;
-  }
- &:hover {
-    background:lightsalmon;
-    color:white;
-    //background: #fdffb6;
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  border: 2px solid black;
+  background-color: #a76e43;
+  color: black;
+  padding: 3px;
+
+  &:hover {
+    background: lightsalmon;
+    color: white;
   }
 
   &:active {
     background: lightsalmon;
-    color:white;
+    color: white;
   }
 `;
-
-//  <button variant="primary">Get started</button>;

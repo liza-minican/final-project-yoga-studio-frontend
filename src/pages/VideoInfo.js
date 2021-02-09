@@ -35,7 +35,7 @@ export const VideoInfo = () => {
         </div>
       </Link>
       <Wrapper>
-        <h1>{videoInfo.videoName}</h1>
+        <Text>{videoInfo.videoName}</Text>
         <Video>
           <ReactPlayer
             url={`${videoInfo.videoUrl}`}
@@ -46,8 +46,8 @@ export const VideoInfo = () => {
             // height="500px"
           />
         </Video>
-        <h2>About</h2>
-        <p>{videoInfo.description}</p>
+        <Text1>About</Text1>
+        <Text2>{videoInfo.description}</Text2>
       </Wrapper>
     </>
   );
@@ -154,3 +154,12 @@ const Video = styled.div`
 //     width: 250px;
 //   }
 // }
+const Text = styled.h1`
+font-size:25px
+`
+const Text1 = styled.h2`
+  font-size: 20px;
+`;
+const Text2 = styled.p`
+  font-size: 18px;
+`;

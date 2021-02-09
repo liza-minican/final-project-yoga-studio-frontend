@@ -16,29 +16,29 @@ export const UserProfile = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const [favoriteVideos, setFavoriteVideos] = useState([]);
 
- const getFavoriteVideos = () => {
-      fetch(`http://localhost:8080/users/${userId}/favorites`, {
-        method: "GET",
-        headers: { Authorization: accessToken },
+  const getFavoriteVideos = () => {
+    fetch(`http://localhost:8080/users/${userId}/favorites`, {
+      method: "GET",
+      headers: { Authorization: accessToken },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Could not get Videos");
       })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          throw new Error("Could not get Videos");
-        })
-        .then((json) => {
-          dispatch(user.actions.setFavoriteVideos(json));
-          setFavoriteVideos(json);
-        });
-    };
+      .then((json) => {
+        dispatch(user.actions.setFavoriteVideos(json));
+        setFavoriteVideos(json);
+      });
+  };
 
   useEffect(getFavoriteVideos, []);
 
   return (
     <>
-      <h1>Hello {userName}</h1>
-      <p>Your video collection</p>
+      <h1>Hello, {userName}</h1>
+      <p>Here is your favorite video collection. Enjoy!</p>
       <Container>
         <Row>
           {favoriteVideos.map((video) => {

@@ -8,11 +8,12 @@ import Col from "react-bootstrap/Col";
 import { SubmitButton } from "components/SubmitButton";
 import { InputField } from "components/InputField";
 import { UserProfile } from "./UserProfile";
-import { user } from "../reducers/user";
 import loginImage from "assets/login.jpg";
 
 import styled from "styled-components";
-import { rgba } from "polished";
+//import { rgba } from "polished";
+
+import { user } from "../reducers/user";
 
 const LOGIN = "http://localhost:8080/sessions";
 
