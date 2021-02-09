@@ -8,14 +8,12 @@ import { useSelector } from "react-redux";
 
 import styled from "styled-components";
 
-export const VideoCard = ({ getVideos, ...video }) => {
-  //const accessToken = useSelector((store) => store.user.login.accessToken);
-  const loggedIn = useSelector((store) => store.user.login.loggedIn);
-  console.log(getVideos);
-   console.log(loggedIn);
+export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
+  const accessToken = useSelector((store) => store.user.login.accessToken);
+
   return (
     <>
-      {loggedIn === true ? (
+      {accessToken && (
         <Link to={`/videos/${video._id}`}>
           <Video>
             <ReactPlayer
@@ -25,12 +23,18 @@ export const VideoCard = ({ getVideos, ...video }) => {
               controls={false}
             />
             <Text>{video.videoName}</Text>
-            <Likes likes={video.likes} id={video._id} getVideos={getVideos} />
+            <Likes
+              likes={video.likes}
+              id={video._id}
+              getVideos={getVideos}
+              getFavoriteVideos={getFavoriteVideos}
+            />
             <Text1>Category: {video.category}</Text1>
             <Text1>Duration: {video.length} min</Text1>
           </Video>
         </Link>
-      ) : (
+      )}
+      {!accessToken && (
         <Link to={`/videos/${video._id}`}>
           <Video>
             <ReactPlayer url={`${video.videoUrl}`} alt={video.videoName} />

@@ -82,11 +82,12 @@ const Text2 = styled.p`
 `;
 const ButtonWrapper = styled.button`
     font-size: 22px;
-    font-weight:400;
+    font-weight:600;
     display: inline-block;
     transition: all 0.4s ease 0s;
-    border: 3px solid black;
-    background-color:#fdffb6;
+    border: 2px solid black;
+    background-color:transparent;
+    //background-color:#fdffb6;
     color:black;
     padding:3px;
     //margin-top: 20px;

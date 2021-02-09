@@ -28,6 +28,9 @@ export const Login = () => {
     dispatch(
       user.actions.setAccessToken({ accessToken: loginResponse.accessToken })
     );
+    //not sure if i need it as i have only email and password for signing in
+    dispatch(user.actions.setUserName({ userName: loginResponse.userName }));
+    dispatch(user.actions.setEmail({ email: loginResponse.email }));
     dispatch(user.actions.setUserId({ userId: loginResponse.userId }));
     setLogInSuccess(true);
     dispatch(user.actions.toggleLoggedState(true));

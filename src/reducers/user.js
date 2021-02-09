@@ -15,7 +15,7 @@ const initialState = {
 
 export const user = createSlice({
   name: "user",
-  initialState: initialState,
+  initialState,
   reducers: {
     setAccessToken: (state, action) => {
       const { accessToken } = action.payload;
@@ -33,11 +33,17 @@ export const user = createSlice({
     setUserName: (state, action) => {
       const { userName } = action.payload;
       console.log(`Name: ${userName}`);
-      state.login.name = userName;
+      state.login.userName = userName;
       localStorage.setItem("userName", userName);
     },
-    setFavoriteVideos: (store, action) => {
-      store.userActions.favoriteVideos = action.payload;
+    setEmail: (state, action) => {
+      const { email } = action.payload;
+      console.log(`Email: ${email}`);
+      state.login.email = email;
+      localStorage.setItem("email", email);
+    },
+    setFavoriteVideos: (state, action) => {
+      state.userActions.favoriteVideos = action.payload;
     },
 
     toggleLoggedState: (state, action) => {
@@ -55,16 +61,26 @@ export const user = createSlice({
   },
 });
 
-//check APP add provider
-//add setVideoCOllection globally
-//check survey project
 
 // export const logout = () => {
 //   return (dispatch) => {
+   //fetch("http://localhost:8080/users/logout", {
+//       method: 'POST',
+//       headers: { Authorization: accessToken }
+//     })
+//  .then((res) => {
+//         if (res.ok) {
+//           return res.json()
+//         }
+//         throw new Error('Failed to log out')
+//       })
+//          .catch((err) => console.log(err));
+//       })
 //     dispatch(user.actions.setUserId({ userId: 0 }));
 //     dispatch(user.actions.setAccessToken({ accessToken: null }));
-//     dispatch(user.actions.setErrorMessage({ errorMessage: null }));
-//     dispatch(user.actions.setSecretMessage({ secretMessage: null }));
-//     localStorage.removeItem('validToken');
+//     dispatch(user.actions.setUserName({ userName: '' }))
+//     dispatch(user.actions.setEmail({ email: '' }))
+//     localStorage.clear();
+
 //   };
 // };

@@ -35,8 +35,18 @@ export const VideoInfo = () => {
         </div>
       </Link>
       <Wrapper>
-        <p>{videoInfo.videoName}</p>
-        <ReactPlayer url={`${videoInfo.videoUrl}`} alt={videoInfo.videoName} />
+        <h1>{videoInfo.videoName}</h1>
+        <Video>
+          <ReactPlayer
+            url={`${videoInfo.videoUrl}`}
+            alt={videoInfo.videoName}
+            muted="true"
+            controls={false}
+            // width="900px"
+            // height="500px"
+          />
+        </Video>
+        <h2>About</h2>
         <p>{videoInfo.description}</p>
       </Wrapper>
     </>
@@ -44,8 +54,57 @@ export const VideoInfo = () => {
 };
 
 const Wrapper = styled.div`
-display:flex
-`
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 50px auto;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 950px) {
+    margin: 30px auto;
+    width: 60%;
+    //margin-bottom: 10px;
+  }
+  @media (max-width: 660px) {
+    //margin: 30px auto;
+    width: 80%;
+    //margin-bottom: 10px;
+  }
+`;
+
+const Video = styled.div`
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  after {
+    padding-top: 56.25%;
+    display: block;
+    content: "";
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+  }
+`;
+
+// const Video = styled.div`
+//   overflow: hidden;
+//   position: relative;
+//   width: 100%;
+
+//   after {
+//     padding-top: 56.25%;
+//     display: block;
+//     content: "";
+//   }
+
+// `;
 
 // .movie-details-container {
 //   position: absolute;

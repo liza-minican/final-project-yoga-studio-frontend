@@ -30,11 +30,11 @@ export const SignUp = () => {
 
   const handleSignUpSuccess = (loginResponse) => {
     localStorage.setItem("validToken", loginResponse.accessToken);
-    dispatch(
-      user.actions.setAccessToken({ accessToken: loginResponse.accessToken })
-    );
+    dispatch(user.actions.setAccessToken({ accessToken: loginResponse.accessToken }));
     dispatch(user.actions.setUserId({ userId: loginResponse.userId }));
     setSignUpSuccess(true);
+    dispatch(user.actions.setEmail({ email: loginResponse.email }));
+    dispatch(user.actions.setUserName({ userName: loginResponse.userName }));
     dispatch(user.actions.toggleLoggedState(true));
   };
 

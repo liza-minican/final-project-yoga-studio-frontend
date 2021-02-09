@@ -13,8 +13,8 @@ export const Header = () => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
-      dispatch(user.actions.logout());
-    };
+    dispatch(user.actions.logout());
+  };
   //console.log(userName);
   //const user = JSON.parse(localStorage.getItem("userName"));
 
@@ -49,11 +49,11 @@ export const Header = () => {
             </Nav.Link>
             {accessToken && (
               <>
-              <Nav.Link as={Link} to="/" onClick={handleLogOut}>
-              Logout
-              </Nav.Link>
-              <Text>name</Text>
-            </>
+                <Nav.Link as={Link} to="/" onClick={handleLogOut}>
+                  Logout
+                </Nav.Link>
+                <Text>Hello, {userName}</Text>
+              </>
             )}
             {!accessToken && (
               <>

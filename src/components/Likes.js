@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { user } from "../reducers/user";
 
-export const Likes = ({ getVideos, id }) => {
+export const Likes = ({ getFavoriteVideos, id }) => {
   // id is a video id that is coming as a prop from the Video Card component
   const dispatch = useDispatch();
   const userId = useSelector((store) => store.user.login.userId);
@@ -15,12 +15,12 @@ export const Likes = ({ getVideos, id }) => {
 
   //save works
   const handleSave = () => {
-    // console.log(userId);
-    // console.log(id);
     fetch(URL_FAVORITE, {
       method: "PUT",
-      /// should i add token authorization here?
-      headers: { Authorization: accessToken },
+      headers: {
+        Authorization: accessToken,
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => {
         console.log(res);
@@ -31,33 +31,34 @@ export const Likes = ({ getVideos, id }) => {
           "Could not add video to favorites. User must be logged in."
         );
       })
-      .then((json) => {
+      .then(() => {
         // here we dispatch favorite video collection to the redux store
-        dispatch(user.actions.setFavoriteVideos(json));
+        //dispatch(user.actions.setFavoriteVideos(json));
         // getVideos();
+        getFavoriteVideos(userId, accessToken);
       });
   };
 
   const handleRemove = () => {
-    // console.log(userId);
-    //console.log(accessToken);
     fetch(URL_FAVORITE, {
       method: "DELETE",
-      headers: { Authorization: accessToken },
-    }).then((res) => {
-      console.log(res);
-      if (res.ok) {
-        return res.json();
-      }
-      throw new Error(
-        "Could not remove video from favorites. User must be logged in."
-      );
-    });
-    // .then((json) => {
-    //   // here we dispatch favorite video collection to the redux store
-    //   dispatch(user.actions.setFavoriteVideos(json));
-    //   // getVideos();
-    // });
+      headers: {
+        Authorization: accessToken,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error(
+          "Could not remove video from favorites. User must be logged in."
+        );
+      })
+      .then(() => {
+        getFavoriteVideos(userId, accessToken);
+      });
   };
 
   // then(() => getVideos());
