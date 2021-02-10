@@ -13,25 +13,27 @@ export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
   return (
     <>
       {accessToken && (
-        <Link to={`/videos/${video._id}`}>
-          <Video>
-            <ReactPlayer
-              url={`${video.videoUrl}`}
-              alt={video.videoName}
-              muted="true"
-              controls={false}
-            />
-            <Likes
-              likes={video.likes}
-              id={video._id}
-              getVideos={getVideos}
-              getFavoriteVideos={getFavoriteVideos}
-            />
-            <Text>{video.videoName}</Text>
-            <Text1>Category: {video.category}</Text1>
-            <Text1>Duration: {video.length} min</Text1>
-          </Video>
-        </Link>
+        <>
+          <Link to={`/videos/${video._id}`}>
+            <Video>
+              <ReactPlayer
+                url={`${video.videoUrl}`}
+                alt={video.videoName}
+                muted="true"
+                controls={false}
+              />
+              <Likes
+                likes={video.likes}
+                id={video._id}
+                getVideos={getVideos}
+                getFavoriteVideos={getFavoriteVideos}
+              />
+              <Text>{video.videoName}</Text>
+              <Text1>Category: {video.category}</Text1>
+              <Text1>Duration: {video.length} min</Text1>
+            </Video>
+          </Link>
+        </>
       )}
       {!accessToken && (
         <Link to={`/videos/${video._id}`}>
