@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import lotus from "assets/lotus.png";
 import styled from "styled-components";
 import { user } from "reducers/user";
-import { Logout } from "./Logout";
+// import { Logout } from "./Logout";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {

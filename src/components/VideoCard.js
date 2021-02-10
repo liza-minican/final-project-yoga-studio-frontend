@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { Likes } from "components/Likes.js";
+//import { Likes } from "components/Likes.js";
 import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
