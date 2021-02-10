@@ -114,7 +114,6 @@ export const Login = () => {
   );
 };
 
-
 const Image = styled.img`
   width: 500px;
   height: auto;

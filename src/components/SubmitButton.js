@@ -10,26 +10,26 @@ export const SubmitButton = ({ title, onClick, onSubmit }) => {
 };
 
 const MainContainer = styled.button`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 30%;
-	background-color: lightsalmon;
-	border: none;
-	margin: 8px auto;
-  
-	  &:hover {
-		background: lightsalmon;
-		cursor: pointer;
-		transition: ease-in-out .3s;
-	  }
-	  @media (max-width: 950px) {
-		width: 70%;
-	  }
-	  @media (max-width: 660px) {
-		width: 70%;
-	
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  background-color: lightsalmon;
+  border: none;
+  margin: 8px auto;
+
+  &:hover {
+    background: lightsalmon;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+  }
+  @media (max-width: 950px) {
+    width: 70%;
+  }
+  @media (max-width: 660px) {
+    width: 70%;
+  }
 `;
 const TextField = styled.p`
   font-family: "Xanh Mono", monospace;

@@ -59,7 +59,7 @@ const Video = styled.div`
     display: block;
     content: "";
   }
-
+ 
   iframe {
     position: absolute;
     top: 0;

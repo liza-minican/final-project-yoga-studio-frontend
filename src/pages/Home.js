@@ -28,24 +28,30 @@ export const Home = () => {
       <Container>
         <Row>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
+            <Wrapper>
               <Image src={bodyicon} alt="yoga-icon" />
               <Text2>
                 Love your body, get stronger, treat yourself with some sweet
                 strechings and toning exercises.
               </Text2>
+            </Wrapper>
           </Col>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
-            <Image src={brainicon} alt="yoga-icon" />
-            <Text2>
-              Clear you mind, breath deep, develop focus and let it shine
-            </Text2>
+            <Wrapper>
+              <Image src={brainicon} alt="yoga-icon" />
+              <Text2>
+                Clear you mind, breath deep, develop focus and let it shine
+              </Text2>
+            </Wrapper>
           </Col>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
-            <Image src={mandalaicon} alt="yoga-icon" />
-            <Text2>
-              Set yourself free, leave things that don't serve you behind, find
-              calmness and joy within you.
-            </Text2>
+            <Wrapper>
+              <Image src={mandalaicon} alt="yoga-icon" />
+              <Text2>
+                Set yourself free, leave things that don't serve you behind,
+                find calmness and joy within you.
+              </Text2>
+            </Wrapper>
           </Col>
         </Row>
       </Container>
@@ -57,15 +63,14 @@ const Image = styled.img`
   width: 100px;
   height: 100px;
   margin-top: 30px;
-  margin-left: 100px;
 `;
 
-// const Wrapper = styled.div`
-//   display: flex;
-//   flex-direction:column;
-//   justify-content: center;
-//   align-items: center;
-// `;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Text = styled.p`
   color: black;

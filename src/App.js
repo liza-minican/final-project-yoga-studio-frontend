@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
@@ -13,6 +13,7 @@ import { VideoList } from "./pages/VideoList";
 import { VideoInfo } from "./pages/VideoInfo";
 import { About } from "./pages/About";
 import { UserProfile } from "./pages/UserProfile";
+import { NotFound } from "./pages/NotFound";
 
 import { user } from "./reducers/user";
 
@@ -49,6 +50,10 @@ export const App = () => {
             <Route path="/profile" exact>
               <UserProfile />
             </Route>
+            <Route path="/404">
+              <NotFound />
+            </Route>
+            <Redirect to="/404" />
           </Switch>
           <Footer />
         </BrowserRouter>

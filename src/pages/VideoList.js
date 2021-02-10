@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 
 //import { videoList } from "../reducers/videoList";
 
-//import styled from "styled-components";
+import styled from "styled-components";
 
 import { VideoCard } from "components/VideoCard";
 import { videoList } from "../reducers/videoList";
@@ -35,11 +35,13 @@ export const VideoList = () => {
 
   return (
     <>
-      <h1>Video collection</h1>
-      <p>
-        Enjoy our cherry picked video colecction and get stronger every day!
-      </p>
       <Container>
+        <TextWrapper>
+          <h1>Video collection</h1>
+          <p>
+            Enjoy our cherry picked video colecction and get stronger every day!
+          </p>
+        </TextWrapper>
         <Row>
           {videoCollection.map((video) => {
             return (
@@ -53,3 +55,14 @@ export const VideoList = () => {
     </>
   );
 };
+
+const TextWrapper = styled.div`
+  margin-top: 30px;
+  h1 {
+    font-family: "Cormorant";
+  }
+  p {
+    font-family: "Cormorant";
+    font-size:18px;
+  }
+`;

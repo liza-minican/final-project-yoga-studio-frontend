@@ -7,8 +7,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import { VideoCard } from "components/VideoCard";
-import { user } from "../reducers/user";
 
+import styled from "styled-components";
+
+import { user } from "../reducers/user";
 
 export const UserProfile = () => {
   const dispatch = useDispatch();
@@ -33,14 +35,15 @@ export const UserProfile = () => {
         setFavoriteVideos(json);
       });
   };
-
   useEffect(getFavoriteVideos, []);
 
   return (
     <>
-      <h1>Hello, {userName}</h1>
-      <p>Here is your favorite video collection. Enjoy!</p>
       <Container>
+        <TextWrapper>
+          <h1>Hello, {userName}</h1>
+          <p>Here is your favorite video collection.</p>
+        </TextWrapper>
         <Row>
           {favoriteVideos.map((video) => {
             return (
@@ -58,3 +61,13 @@ export const UserProfile = () => {
     </>
   );
 };
+const TextWrapper = styled.div`
+  margin-top: 30px;
+  h1 {
+    font-family: "Cormorant";
+  }
+  p {
+    font-family: "Cormorant";
+    font-size: 18px;
+  }
+`;

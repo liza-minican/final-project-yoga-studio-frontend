@@ -4,11 +4,9 @@ import styled from "styled-components";
 export const Footer = () => {
   return (
     <MyFooter>
-      <div>
-        <p> Yoga Benefits</p>
-        <p>Created by Liza Minican</p>
-        <p>All rights reserved 2021</p>
-      </div>
+      <p> Yoga Benefits</p>
+      <p>Created by Liza Minican</p>
+      <p>All rights reserved {new Date().getFullYear()}</p>
     </MyFooter>
   );
 };

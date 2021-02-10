@@ -42,8 +42,14 @@ export const user = createSlice({
       state.login.email = email;
       localStorage.setItem("email", email);
     },
+
     setFavoriteVideos: (state, action) => {
+      console.log(action.payload);
       state.userActions.favoriteVideos = action.payload;
+      //       const updateArray = () =>
+      // {    if(favoriteVideos.some((el) => el._id !== id)){
+      //   favoriteVideos.push(el)
+      // };
     },
 
     toggleLoggedState: (state, action) => {
@@ -61,10 +67,9 @@ export const user = createSlice({
   },
 });
 
-
 // export const logout = () => {
 //   return (dispatch) => {
-   //fetch("http://localhost:8080/users/logout", {
+//fetch("http://localhost:8080/users/logout", {
 //       method: 'POST',
 //       headers: { Authorization: accessToken }
 //     })
