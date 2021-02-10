@@ -28,11 +28,11 @@ export const Home = () => {
       <Container>
         <Row>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
-            <Image src={bodyicon} alt="yoga-icon" />
-            <Text2>
-              Love your body, get stronger, treat yourself with some sweet
-              strechings and toning exercises.
-            </Text2>
+              <Image src={bodyicon} alt="yoga-icon" />
+              <Text2>
+                Love your body, get stronger, treat yourself with some sweet
+                strechings and toning exercises.
+              </Text2>
           </Col>
           <Col xs="12" sm="12" md="4" lg="4" xl="4">
             <Image src={brainicon} alt="yoga-icon" />
@@ -60,6 +60,13 @@ const Image = styled.img`
   margin-left: 100px;
 `;
 
+// const Wrapper = styled.div`
+//   display: flex;
+//   flex-direction:column;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
 const Text = styled.p`
   color: black;
   font-weight: 600;
@@ -83,17 +90,23 @@ const ButtonWrapper = styled.button`
   display: inline-block;
   transition: all 0.4s ease 0s;
   border: 2px solid black;
-  background-color: #a76e43;
+  background-color: #d7e9dc;
   color: black;
   padding: 3px;
+  border-radius: 1px;
 
-  &:hover {
-    background: lightsalmon;
-    color: white;
-  }
-
-  &:active {
-    background: lightsalmon;
-    color: white;
+  @media (min-width: 768px) {
+    /* &:hover {
+      background-color: #d7e9dc;
+      box-shadow: inset 6.5em 0 0 0 var(--hover);
+    } */
+    &:hover {
+      background: #ffa07a;
+      color: black;
+    }
+    &:active {
+      background: #fdcb6e;
+      color: black;
+    }
   }
 `;

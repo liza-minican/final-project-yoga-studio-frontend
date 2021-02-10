@@ -54,8 +54,6 @@ export const UserProfile = () => {
           })}
         </Row>
       </Container>
-      {/* <button onClick ={getFavorites}>Get favorites</button> */}
-      {/* <Favourite collection></Favourite> */}
     </>
   );
 };

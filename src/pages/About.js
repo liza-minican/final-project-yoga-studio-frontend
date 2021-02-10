@@ -1,48 +1,57 @@
-// import React from "react";
-// import styled from "styled-components";
-
-// export const About = () => {
-//   return (
-//     <>
-//       <h1>About Us</h1>
-//       <p>Some text about our cool studio</p>
-//     </>
-//   );
-// };
 import React from "react";
-import { Card, Button, CardDeck, CardImg } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-import yoga_image1 from "assets/image_background3.jpg"
+import yoga from "assets/yoga.jpg";
 
-export const About = ({ getVideos, ...video }) => {
+import styled from "styled-components";
+
+export const About = () => {
   return (
     <>
-      <CardDeck>
-        <Card style={{ width: "18rem" }}>
-          <CardImg
-            src={yoga_image1}
-          />
-          <Card.Body>
-            <Card.Title>What is Yoga Benefits?</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Get Started</Button>
-          </Card.Body>
-        </Card>
-         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={yoga_image1} />
-          <Card.Body>
-            <Card.Title>Why would you have an account with us?</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Sign up</Button>
-          </Card.Body>
-        </Card> 
-      </CardDeck>
+      <Container>
+          <Row>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <Image src={yoga} alt="yoga-image" />
+            </Col>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <Text>
+                Yoga Benfits is a yoga studio online. It was created to Clear
+                you mind, breath deep, develop focus and let your inner light
+                shine. Yoga Benfits is a yoga studio online. It was created to
+                Clear you mind, breath deep, develop focus and let your inner
+                light shine. Yoga Benfits is a yoga studio online. It was
+                created to Clear you mind, breath deep, develop focus and let
+                your inner light shine.
+              </Text>
+            </Col>
+          </Row>
+      </Container>
     </>
   );
 };
+
+const Image = styled.img`
+  width: 500px;
+  height: auto;
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const Text = styled.div`
+  font-size: 20px;
+  background: #f0e5d8;
+  width: 500px;
+  height: auto;
+  font-family: "Montserrat";
+`;
+// const Image1 = styled.main`
+//   //background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
+//   background-color:
+//   position: fixed;
+//   width: 100%;
+//   height: 100%;
+//   background-size: cover;
+// `;

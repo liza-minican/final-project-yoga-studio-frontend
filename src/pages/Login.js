@@ -4,15 +4,13 @@ import { useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import styled from "styled-components";
+
+import loginImage from "assets/login.jpg";
 
 import { SubmitButton } from "components/SubmitButton";
 import { InputField } from "components/InputField";
 import { UserProfile } from "./UserProfile";
-import loginImage from "assets/login.jpg";
-
-import styled from "styled-components";
-//import { rgba } from "polished";
-
 import { user } from "../reducers/user";
 
 const LOGIN = "http://localhost:8080/sessions";
@@ -29,7 +27,6 @@ export const Login = () => {
     dispatch(
       user.actions.setAccessToken({ accessToken: loginResponse.accessToken })
     );
-    //not sure if i need it as i have only email and password for signing in
     dispatch(user.actions.setUserName({ userName: loginResponse.userName }));
     dispatch(user.actions.setEmail({ email: loginResponse.email }));
     dispatch(user.actions.setUserId({ userId: loginResponse.userId }));
@@ -117,17 +114,13 @@ export const Login = () => {
   );
 };
 
-// const Image = styled.main`
-//   //background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
-//   position: fixed;
-//   width: 100%;
-//   height: 100%;
-//   background-size: cover;
-// `;
 
 const Image = styled.img`
   width: 500px;
   height: auto;
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const Form = styled.form`

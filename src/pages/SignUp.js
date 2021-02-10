@@ -6,17 +6,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import styled from "styled-components";
-import { rgba } from "polished";
 
 import signup1 from "assets/signup1.jpg";
 import signup2 from "assets/signup2.jpg";
 
-import { user } from "../reducers/user";
 
 import { SubmitButton } from "components/SubmitButton";
 import { InputField } from "components/InputField";
-
 import { UserProfile } from "./UserProfile";
+import { user } from "../reducers/user";
 
 const SIGNUP = "http://localhost:8080/users";
 
@@ -30,7 +28,9 @@ export const SignUp = () => {
 
   const handleSignUpSuccess = (loginResponse) => {
     localStorage.setItem("validToken", loginResponse.accessToken);
-    dispatch(user.actions.setAccessToken({ accessToken: loginResponse.accessToken }));
+    dispatch(
+      user.actions.setAccessToken({ accessToken: loginResponse.accessToken })
+    );
     dispatch(user.actions.setUserId({ userId: loginResponse.userId }));
     setSignUpSuccess(true);
     dispatch(user.actions.setEmail({ email: loginResponse.email }));
@@ -123,7 +123,6 @@ export const SignUp = () => {
           </Row>
         </Container>
       )}
-      ;
     </>
   );
 };
@@ -140,13 +139,15 @@ const Image = styled.img`
   width: 400px;
   height: auto;
   margin-top: 30px;
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 80%;
-  //margin-bottom: 30px;
   margin: 100px auto;
   align-items: center;
   justify-content: center;

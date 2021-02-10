@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+//import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
+//import { Likes } from "components/Likes.js";
 
 import styled from "styled-components";
 
@@ -10,6 +12,7 @@ import styled from "styled-components";
 
 export const VideoInfo = () => {
   const { videoId } = useParams();
+  //const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const [videoInfo, setVideoInfo] = useState({});
 
@@ -155,8 +158,8 @@ const Video = styled.div`
 //   }
 // }
 const Text = styled.h1`
-font-size:25px
-`
+  font-size: 25px;
+`;
 const Text1 = styled.h2`
   font-size: 20px;
 `;

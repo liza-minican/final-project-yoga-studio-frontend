@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { videoList } from "../reducers/videoList";
+//import { videoList } from "../reducers/videoList";
 
 //import styled from "styled-components";
 
@@ -13,7 +13,7 @@ import { VideoCard } from "components/VideoCard";
 
 export const VideoList = () => {
   const VIDEO_COLLECTION_URL = "http://localhost:8080/videos";
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const [videoCollection, setVideoCollection] = useState([]);
 
   //dispatch does not work in the fetc h and I cant use localstorage somehow as well

@@ -3,7 +3,6 @@ import ReactPlayer from "react-player";
 import { Likes } from "components/Likes.js";
 import { Link } from "react-router-dom";
 
-//import { user } from "../reducers/user";
 import { useSelector } from "react-redux";
 
 import styled from "styled-components";
@@ -23,12 +22,12 @@ export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
               controls={false}
             />
             <Text>{video.videoName}</Text>
-            <Likes
+            {/* <Likes
               likes={video.likes}
               id={video._id}
               getVideos={getVideos}
               getFavoriteVideos={getFavoriteVideos}
-            />
+            /> */}
             <Text1>Category: {video.category}</Text1>
             <Text1>Duration: {video.length} min</Text1>
           </Video>

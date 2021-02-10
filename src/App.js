@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import { Header } from "components/Header.js";
+import { Footer } from "components/Footer";
+
 import { Home } from "./pages/Home.js";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
@@ -48,6 +50,7 @@ export const App = () => {
               <UserProfile />
             </Route>
           </Switch>
+          <Footer />
         </BrowserRouter>
       </Provider>
     </>
