@@ -6,8 +6,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { user } from "../reducers/user";
 import { VideoCard } from "components/VideoCard";
+import { user } from "../reducers/user";
+
 
 export const UserProfile = () => {
   const dispatch = useDispatch();

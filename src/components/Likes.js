@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { user } from "../reducers/user";
 
-export const Likes = ({ getFavoriteVideos, id }) => {
+export const Likes = ({ id }) => {
   // id is a video id that is coming as a prop from the Video Card component
   const dispatch = useDispatch();
   const userId = useSelector((store) => store.user.login.userId);
@@ -74,9 +74,8 @@ export const Likes = ({ getFavoriteVideos, id }) => {
 };
 
 const WrapperLikes = styled.div`
-    display: flex;
-    justify-content: space-around;
-}
+  display: flex;
+  justify-content: space-around;
 `;
 const Button = styled.button`
   //dont know how to write this in a correct way
@@ -88,7 +87,7 @@ const Button = styled.button`
   margin-right: 14px;
   display: flex;
   justify-content: center;
-  */ & hover {
+  &:hover {
     cursor: pointer;
   }
 `;
