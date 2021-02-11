@@ -43,13 +43,39 @@ export const user = createSlice({
       localStorage.setItem("email", email);
     },
 
-    setFavoriteVideos: (state, action) => {
-      console.log(action.payload);
-      state.userActions.favoriteVideos = action.payload;
-      //       const updateArray = () =>
-      // {    if(favoriteVideos.some((el) => el._id !== id)){
-      //   favoriteVideos.push(el)
-      // };
+    addFavoriteVideos: (state, action) => {
+      const videoExists = state.userActions.favoriteVideos.find(
+        (video) => video._id === action.payload._id
+      );
+      if (!videoExists) {
+        const newArray = state.userActions.favoriteVideos.slice();
+        newArray.push({ ...action.payload });
+        state.userActions.favoriteVideos = newArray;
+      } else {
+        videoExists.quantity += 0;
+      }
+    },
+    // setFavoriteVideos: (state, action) => {
+    //   console.log(action.payload);
+    //   state.userActions.favoriteVideos = action.payload;
+    //   const videoExists = state.userActions.favoriteVideos.some(
+    //     (el) => el._id === action.payload._id
+    //   );
+    //   if (!videoExists) {
+    //     state.userActions.favoriteVideos.push(action.payload);
+    //   }
+    // },
+    removeFavoriteVideos: (state, action) => {
+      const videoExists = state.userActions.favoriteVideos.find(
+        (video) => video._id === action.payload._id
+      );
+      if (videoExists && videoExists.quantity === 1) {
+        state.userActions.favoriteVideos = state.userActions.favoriteVideos.filter(
+          (video) => video._id !== action.payload._id
+        );
+      } else if (videoExists) {
+        videoExists.quantity -= 1;
+      }
     },
 
     toggleLoggedState: (state, action) => {

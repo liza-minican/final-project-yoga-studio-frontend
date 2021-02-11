@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-//import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-//import { Likes } from "components/Likes.js";
+import previous from "assets/previous.png";
 
 import styled from "styled-components";
 
@@ -32,10 +31,10 @@ export const VideoInfo = () => {
   return (
     <>
       <Link to="/videos" exact="true">
-        <div className="back-arrow-text">
-          {/* <img className="arrow" src={arrow} alt="back-arrow" /> */}
-          <p className="back-movies-text">Back to Videos</p>
-        </div>
+        <WrapperGoBack>
+          <Icon src={previous} alt="back-arrow" />
+          <p>Back to Videos</p>
+        </WrapperGoBack>
       </Link>
       <Wrapper>
         <Text>{videoInfo.videoName}</Text>
@@ -49,7 +48,8 @@ export const VideoInfo = () => {
             // height="500px"
           />
         </Video>
-        <Text1>About</Text1>
+        <Text1>Category: {videoInfo.category}</Text1>
+        <Text1>Duration: {videoInfo.length} min</Text1>
         <Text2>{videoInfo.description}</Text2>
       </Wrapper>
     </>
@@ -76,6 +76,17 @@ const Wrapper = styled.div`
   }
 `;
 
+const WrapperGoBack = styled.div`
+margin:20px;
+  p {
+    font-family: "Cormorant";
+  }
+`;
+
+const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
 const Video = styled.div`
   overflow: hidden;
   position: relative;
@@ -96,73 +107,16 @@ const Video = styled.div`
   }
 `;
 
-// const Video = styled.div`
-//   overflow: hidden;
-//   position: relative;
-//   width: 100%;
-
-//   after {
-//     padding-top: 56.25%;
-//     display: block;
-//     content: "";
-//   }
-
-// `;
-
-// .movie-details-container {
-//   position: absolute;
-//   display: flex;
-//   align-items: flex-end;
-//   left: 50px;
-//   bottom: 50px;
-// }
-// .movie-details-backdrop-image {
-//   width: 100vw;
-//   height: 100vh;
-//   object-fit: cover;
-//   margin-bottom: -4px;
-//   filter: brightness(65%);
-// }
-
-// .movie-details-poster {
-//   width: 350px;
-//   border: 5px solid #fff;
-// }
-
-// .movie-details-information {
-//   margin: 20px;
-//   max-width: 450px;
-//   color: #fff;
-// }
-// .vote-red {
-//   margin-left: 10px;
-//   color: red;
-//   font-weight: 400;
-//   font-size: 20px;
-// }
-
-// @media (min-width: 768px) and (max-width: 1023px) {
-//   .movie-details-poster {
-//     width: 250px;
-//   }
-//   .movie-details-information {
-//     width: 350px;
-//   }
-// }
-// @media (max-width: 767px) {
-//   .movie-details-poster {
-//     display: none;
-//   }
-//   .movie-details-information {
-//     width: 250px;
-//   }
-// }
 const Text = styled.h1`
   font-size: 25px;
+  font-family: "Cormorant";
 `;
 const Text1 = styled.h2`
   font-size: 20px;
+  font-weight: bold;
+  font-family: "Cormorant";
 `;
 const Text2 = styled.p`
   font-size: 18px;
+  font-family: "Cormorant";
 `;

@@ -10,10 +10,10 @@ import { VideoCard } from "components/VideoCard";
 
 import styled from "styled-components";
 
-import { user } from "../reducers/user";
+//import { user } from "../reducers/user";
 
 export const UserProfile = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const userName = useSelector((store) => store.user.login.userName);
   const userId = useSelector((store) => store.user.login.userId);
   const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -31,7 +31,7 @@ export const UserProfile = () => {
         throw new Error("Could not get Videos");
       })
       .then((json) => {
-        dispatch(user.actions.setFavoriteVideos(json));
+        //dispatch(user.actions.setFavoriteVideos(json));
         setFavoriteVideos(json);
       });
   };

@@ -14,7 +14,7 @@ export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
     <>
       {accessToken && (
         <>
-          <Link to={`/videos/${video._id}`}>
+          <VideoCardLink to={`/videos/${video._id}`}>
             <Video>
               <ReactPlayer
                 url={`${video.videoUrl}`}
@@ -32,18 +32,18 @@ export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
               <Text1>Category: {video.category}</Text1>
               <Text1>Duration: {video.length} min</Text1>
             </Video>
-          </Link>
+          </VideoCardLink>
         </>
       )}
       {!accessToken && (
-        <Link to={`/videos/${video._id}`}>
+        <VideoCardLink to={`/videos/${video._id}`}>
           <Video>
             <ReactPlayer url={`${video.videoUrl}`} alt={video.videoName} />
             <Text>{video.videoName}</Text>
             <Text1>Category: {video.category}</Text1>
             <Text1>Duration: {video.length} min</Text1>
           </Video>
-        </Link>
+        </VideoCardLink>
       )}
     </>
   );
@@ -59,7 +59,7 @@ const Video = styled.div`
     display: block;
     content: "";
   }
- 
+
   iframe {
     position: absolute;
     top: 0;
@@ -72,9 +72,17 @@ const Video = styled.div`
 const Text = styled.p`
   font-size: 16px;
   font-weight: 600;
+  font-family: "Cormorant";
 `;
 
 const Text1 = styled.p`
   font-size: 14px;
   font-weight: 400;
+  font-family: "Cormorant";
+`;
+
+export const VideoCardLink = styled(Link)`
+  border: none;
+  background-color: white;
+  text-decoration: none;
 `;

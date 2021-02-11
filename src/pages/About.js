@@ -11,6 +11,7 @@ export const About = () => {
   return (
     <>
       <Container>
+        <WrapperAbout>
           <Row>
             <Col xs="12" sm="12" md="6" lg="6" xl="6">
               <Image src={yoga} alt="yoga-image" />
@@ -27,26 +28,30 @@ export const About = () => {
               </Text>
             </Col>
           </Row>
+        </WrapperAbout>
       </Container>
     </>
   );
 };
 
 const Image = styled.img`
+  //position:relative;
   width: 500px;
   height: auto;
   @media (max-width: 900px) {
     display: none;
-  }
+  }   
 `;
 
 const Text = styled.div`
+  //position: absolute;
   font-size: 20px;
   background: #f0e5d8;
   width: 500px;
   height: auto;
-  font-family: "Montserrat";
+  font-family: "Cormorant";
 `;
+
 // const Image1 = styled.main`
 //   //background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
 //   background-color:
@@ -55,3 +60,6 @@ const Text = styled.div`
 //   height: 100%;
 //   background-size: cover;
 // `;
+const WrapperAbout = styled.div`
+  margin-top: 30px;-
+`;

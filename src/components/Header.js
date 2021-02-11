@@ -114,7 +114,9 @@ const Text = styled.p`
   margin-top: 8px;
   font-size: 12px;
   font-weight: bold;
-  color: #a76e43;
+  font-family: "Cormorant";
+  color: #4c5346;
+  //color: #a76e43;
   text-transform: uppercase;
   @media (max-width: 900px) {
     display: none;

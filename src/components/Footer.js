@@ -21,4 +21,8 @@ const MyFooter = styled.footer`
   font-size: 16px;
   margin-top: 50px;
   padding-top: 50px;
+  p{
+  font-family: "Cormorant";
+  font-weight:bold;
+  }
 `;

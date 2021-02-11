@@ -13,24 +13,13 @@ export const Likes = ({ id }) => {
   const favoriteVideos = useSelector(
     (store) => store.user.userActions.favoriteVideos
   );
-   console.log(favoriteVideos);
-  const added = favoriteVideos.some((el) => el._id === id)
-  ;
+  console.log(favoriteVideos);
+  const added = favoriteVideos.some((el) => el._id === id);
   const userId = useSelector((store) => store.user.login.userId);
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const URL_FAVORITE = `http://localhost:8080/users/${userId}/favorites/${id}`;
 
- 
-  // const checkAddedState = () => {
-  //   // const found = favoriteVideos.some((el) => el._id === id)
-  //   // ;
-  //   if (found) {
-  //     setAdded(true);
-  //   } else {
-  //     setAdded(false);
-  //   }
-  // };
-  //save works
+
   const handleSave = () => {
     fetch(URL_FAVORITE, {
       method: "PUT",
@@ -49,7 +38,7 @@ export const Likes = ({ id }) => {
         );
       })
       .then((json) => {
-        dispatch(user.actions.setFavoriteVideos(json));
+        dispatch(user.actions.addFavoriteVideos(json));
         // getFavoriteVideos(userId, accessToken);
       });
   };
@@ -72,7 +61,7 @@ export const Likes = ({ id }) => {
         );
       })
       .then((json) => {
-        dispatch(user.actions.setFavoriteVideos(json));
+        dispatch(user.actions.removeFavoriteVideos(json));
         // getFavoriteVideos(userId, accessToken);
       });
   };

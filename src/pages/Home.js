@@ -70,12 +70,15 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Cormorant";
 `;
 
 const Text = styled.p`
   color: black;
   font-weight: 600;
   opacity: 1;
+  font-family: "Cormorant";
+  font-size:20px;
 `;
 
 const Text1 = styled.h1`
@@ -83,19 +86,21 @@ const Text1 = styled.h1`
   color: black;
   font-weight: 600;
   opacity: 1;
-  font-family: "Cantarell", sans-serif;
+  font-family: "Cormorant";;
 `;
 const Text2 = styled.p`
   margin-top: 50px;
-  font-family: "Cantarell", sans-serif;
+  font-size:20px;
+  font-family: "Cormorant";;
 `;
 const ButtonWrapper = styled.button`
   font-size: 18px;
   font-weight: 600;
+  font-family: "Cormorant";
   display: inline-block;
   transition: all 0.4s ease 0s;
-  border: 2px solid black;
-  background-color: #d7e9dc;
+  border: none;
+  background-color: #ffa07a;
   color: black;
   padding: 3px;
   border-radius: 1px;
@@ -106,8 +111,8 @@ const ButtonWrapper = styled.button`
       box-shadow: inset 6.5em 0 0 0 var(--hover);
     } */
     &:hover {
-      background: #ffa07a;
-      color: black;
+      background: #889a70;
+      color: white;
     }
     &:active {
       background: #fdcb6e;

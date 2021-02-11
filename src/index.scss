@@ -1,7 +1,6 @@
-
 @import "node_modules/bootstrap/scss/bootstrap"; // existing bootstrap import
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 
 * {
   margin: 0px;
@@ -32,3 +31,6 @@ p {
   height: 350px;
   opacity: 0.9;
 }
+// .a {
+//   text-decoration: none;
+// }
