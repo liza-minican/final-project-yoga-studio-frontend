@@ -32,59 +32,30 @@ export const VideoInfo = () => {
 
   return (
     <>
-      {accessToken && (
-        <>
-          <Link to="/videos" exact="true">
-            <WrapperGoBack>
-              <Icon src={previous} alt="back-arrow" />
-              <p>Back to Videos</p>
-            </WrapperGoBack>
-          </Link>
-          <Wrapper>
-            <Text>{videoInfo.videoName}</Text>
-            <Video>
-              <ReactPlayer
-                url={`${videoInfo.videoUrl}`}
-                alt={videoInfo.videoName}
-                muted="true"
-                controls={false}
-                // width="900px"
-                // height="500px"
-              />
-            </Video>
-            <Likes id={videoInfo._id} />
-            <Text1>Category: {videoInfo.category}</Text1>
-            <Text1>Duration: {videoInfo.length} min</Text1>
-            <Text2>{videoInfo.description}</Text2>
-          </Wrapper>
-        </>
-      )}
-      {!accessToken && (
-        <>
-          <Link to="/videos" exact="true">
-            <WrapperGoBack>
-              <Icon src={previous} alt="back-arrow" />
-              <p>Back to Videos</p>
-            </WrapperGoBack>
-          </Link>
-          <Wrapper>
-            <Text>{videoInfo.videoName}</Text>
-            <Video>
-              <ReactPlayer
-                url={`${videoInfo.videoUrl}`}
-                alt={videoInfo.videoName}
-                muted="true"
-                controls={false}
-                // width="900px"
-                // height="500px"
-              />
-            </Video>
-            <Text1>Category: {videoInfo.category}</Text1>
-            <Text1>Duration: {videoInfo.length} min</Text1>
-            <Text2>{videoInfo.description}</Text2>
-          </Wrapper>
-        </>
-      )}
+      <Link to="/videos" exact="true">
+        <WrapperGoBack>
+          <Icon src={previous} alt="back-arrow" />
+          <p>Back to Videos</p>
+        </WrapperGoBack>
+      </Link>
+      <Wrapper>
+        <Text>{videoInfo.videoName}</Text>
+        <Video>
+          <ReactPlayer
+            className="react-player"
+            url={`${videoInfo.videoUrl}`}
+            alt={videoInfo.videoName}
+            muted="true"
+            controls={false}
+            width="100%"
+            height="100%"
+          />
+        </Video>
+        {accessToken && <Likes id={videoInfo._id} />}
+        <Text1>Category: {videoInfo.category}</Text1>
+        <Text1>Duration: {videoInfo.length} min</Text1>
+        <Text2>{videoInfo.description}</Text2>
+      </Wrapper>
     </>
   );
 };
@@ -100,16 +71,14 @@ const Wrapper = styled.div`
   @media (max-width: 950px) {
     margin: 30px auto;
     width: 60%;
-    //margin-bottom: 10px;
   }
   @media (max-width: 660px) {
-    //margin: 30px auto;
     width: 80%;
-    //margin-bottom: 10px;
   }
 `;
 
 const WrapperGoBack = styled.div`
+  text-decoration: none !important;
   margin: 20px;
   p {
     font-family: "Cormorant";
@@ -120,23 +89,19 @@ const Icon = styled.img`
   width: 20px;
   height: 20px;
 `;
+
 const Video = styled.div`
   overflow: hidden;
   position: relative;
+  display: block;
+  padding-top: 56.25%;
   width: 100%;
+  margin-bottom: 20px;
 
-  after {
-    padding-top: 56.25%;
-    display: block;
-    content: "";
-  }
-
-  iframe {
+  .react-player {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 50%;
   }
 `;
 

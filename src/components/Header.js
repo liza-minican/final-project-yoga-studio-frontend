@@ -82,7 +82,6 @@ const Logo = styled.img`
   height: 40px;
 `;
 const NavLinks = styled.div`
-  //justify-self: end;
   list-style-type: none;
   margin: auto 0;
 

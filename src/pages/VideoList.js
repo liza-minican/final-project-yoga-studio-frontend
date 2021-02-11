@@ -23,14 +23,10 @@ export const VideoList = () => {
   }, []);
 
   const filteredVideos = videos.filter((item) => {
-    console.log(item.category);
     if (filters.category) {
       return item.category === filters.category;
-    } else if (item.category === null) {
-      return item;
-    } else {
-      return item;
     }
+    return true;
   });
 
   return (
@@ -41,10 +37,22 @@ export const VideoList = () => {
           dispatch(videoList.actions.setCategory(event.target.value))
         }
       >
-        <option value={null}>Choose level</option>
+        <option value="">Choose level</option>
         <option value="Advanced">Advanced</option>
         <option value="Intermediate">Intermediate</option>
         <option value="Beginner">Beginner</option>
+      </select>
+      <select
+        value={filters.length}
+        onChange={(event) =>
+          dispatch(videoList.actions.setLength(event.target.value))
+        }
+      >
+        <option value={null}>Choose duration</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
       </select>
       <Container>
         <TextWrapper>

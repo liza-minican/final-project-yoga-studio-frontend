@@ -24,6 +24,9 @@ export const videoList = createSlice({
     setCategory: (state, action) => {
       state.filters.category = action.payload;
     },
+    setLength: (state, action) => {
+      state.filters.length = action.payload;
+    },
   },
 });
 

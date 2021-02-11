@@ -19,7 +19,9 @@ export const Home = () => {
       >
         <Container>
           <Text1>Yoga Benefits</Text1>
-          <Text>Welcome to our online yoga space. Enjoy your time here!</Text>
+          <TextWrapper>
+            <Text>Welcome to our online yoga space. Enjoy your time here!</Text>
+          </TextWrapper>
           <Link to="/users">
             <ButtonWrapper>Get started</ButtonWrapper>
           </Link>
@@ -78,7 +80,13 @@ const Text = styled.p`
   font-weight: 600;
   opacity: 1;
   font-family: "Cormorant";
-  font-size:20px;
+  font-size: 20px;
+  opacity: 2 !important;
+`;
+const TextWrapper = styled.div`
+  background-color:#d7e9dc;
+  opacity:0.7;
+  width:40%;
 `;
 
 const Text1 = styled.h1`
@@ -86,12 +94,12 @@ const Text1 = styled.h1`
   color: black;
   font-weight: 600;
   opacity: 1;
-  font-family: "Cormorant";;
+  font-family: "Cormorant"; ;
 `;
 const Text2 = styled.p`
   margin-top: 50px;
-  font-size:20px;
-  font-family: "Cormorant";;
+  font-size: 20px;
+  font-family: "Cormorant"; ;
 `;
 const ButtonWrapper = styled.button`
   font-size: 18px;
@@ -100,22 +108,18 @@ const ButtonWrapper = styled.button`
   display: inline-block;
   transition: all 0.4s ease 0s;
   border: none;
-  background-color: #ffa07a;
+  background-color: #efce8f;
   color: black;
   padding: 3px;
   border-radius: 1px;
 
   @media (min-width: 768px) {
-    /* &:hover {
-      background-color: #d7e9dc;
-      box-shadow: inset 6.5em 0 0 0 var(--hover);
-    } */
     &:hover {
-      background: #889a70;
+      background: #fdcb6e;
       color: white;
     }
     &:active {
-      background: #fdcb6e;
+      background: #d7e9dc;
       color: black;
     }
   }
