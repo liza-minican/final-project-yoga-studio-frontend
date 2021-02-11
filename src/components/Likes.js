@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 //import { getFavoriteVideos } from "../reducers/user";
-
+import { addFavoriteVideos, removeFavoriteVideos } from "reducers/user";
 import styled from "styled-components";
 
-import { user } from "../reducers/user";
+//import { user } from "../reducers/user";
 
 export const Likes = ({ id }) => {
   // id is a video id that is coming as a prop from the Video Card component
@@ -18,59 +18,65 @@ export const Likes = ({ id }) => {
   const added = favoriteVideos.some((el) => el._id === id);
   const userId = useSelector((store) => store.user.login.userId);
   const accessToken = useSelector((store) => store.user.login.accessToken);
-  const URL_FAVORITE = `http://localhost:8080/users/${userId}/favorites/${id}`;
-
-//  const getFavorite = () => {
-//    dispatch(getFavoriteVideos(userId, accessToken));
-//    //setFavoriteVideos(json);
-//  };
-
+  //const URL_FAVORITE = `http://localhost:8080/users/${userId}/favorites/${id}`;
 
   const handleSave = () => {
-    fetch(URL_FAVORITE, {
-      method: "PUT",
-      headers: {
-        Authorization: accessToken,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error(
-          "Could not add video to favorites. User must be logged in."
-        );
-      })
-      .then((json) => {
-        dispatch(user.actions.addFavoriteVideos(json));
-        //getFavoriteVideos(userId, accessToken);
-      });
+    dispatch(addFavoriteVideos(userId, accessToken, id));
   };
 
   const handleRemove = () => {
-    fetch(URL_FAVORITE, {
-      method: "DELETE",
-      headers: {
-        Authorization: accessToken,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error(
-          "Could not remove video from favorites. User must be logged in."
-        );
-      })
-      .then((json) => {
-        dispatch(user.actions.removeFavoriteVideos(json));
-        // getFavoriteVideos(userId, accessToken);
-      });
+    dispatch(removeFavoriteVideos(userId, accessToken, id));
   };
+  //  const getFavorite = () => {
+  //    dispatch(getFavoriteVideos(userId, accessToken));
+  //    //setFavoriteVideos(json);
+  //  };
+
+  // const handleSave = () => {
+  //   fetch(URL_FAVORITE, {
+  //     method: "PUT",
+  //     headers: {
+  //       Authorization: accessToken,
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => {
+  //       console.log(res);
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       throw new Error(
+  //         "Could not add video to favorites. User must be logged in."
+  //       );
+  //     })
+  //     .then((json) => {
+  //       dispatch(user.actions.addFavoriteVideos(json));
+  //       //getFavoriteVideos(userId, accessToken);
+  //     });
+  // };
+
+  // const handleRemove = () => {
+  //   fetch(URL_FAVORITE, {
+  //     method: "DELETE",
+  //     headers: {
+  //       Authorization: accessToken,
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => {
+  //       console.log(res);
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       throw new Error(
+  //         "Could not remove video from favorites. User must be logged in."
+  //       );
+  //     })
+  //     .then((json) => {
+  //       dispatch(user.actions.removeFavoriteVideos(json));
+  //       // getFavoriteVideos(userId, accessToken);
+  //     });
+  // };
 
   // then(() => getVideos());
   return (

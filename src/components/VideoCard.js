@@ -23,10 +23,10 @@ export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
                 controls={false}
               />
               <Likes
-                likes={video.likes}
+                //likes={video.likes}
                 id={video._id}
                 getVideos={getVideos}
-                getFavoriteVideos={getFavoriteVideos}
+                //getFavoriteVideos={getFavoriteVideos}
               />
               <Text>{video.videoName}</Text>
               <Text1>Category: {video.category}</Text1>

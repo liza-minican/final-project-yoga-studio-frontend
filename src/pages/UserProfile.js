@@ -10,40 +10,43 @@ import { VideoCard } from "components/VideoCard";
 
 import styled from "styled-components";
 
-import { user} from "../reducers/user";
-//import { getFavoriteVideos } from "../reducers/user";
+//import { user} from "../reducers/user";
+import { getFavoriteVideos } from "../reducers/user";
 
 export const UserProfile = () => {
   const dispatch = useDispatch();
   const userName = useSelector((store) => store.user.login.userName);
   const userId = useSelector((store) => store.user.login.userId);
   const accessToken = useSelector((store) => store.user.login.accessToken);
-  const [favoriteVideos, setFavoriteVideos] = useState([]);
+  const favoriteVideos = useSelector(
+    (store) => store.user.userActions.favoriteVideos
+  );
+  //const [favoriteVideos, setFavoriteVideos] = useState([]);
 
-  const getFavoriteVideos = () => {
-    fetch(`http://localhost:8080/users/${userId}/favorites`, {
-      method: "GET",
-      headers: { Authorization: accessToken },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error("Could not get Videos");
-      })
-      .then((json) => {
-        dispatch(user.actions.setFavoriteVideos(json));
-        setFavoriteVideos(json);
-      });
-  };
-
-  // const getFavorite = () => {
-  //   dispatch(getFavoriteVideos(userId, accessToken));
-  //   setFavoriteVideos(json);
+  // const getFavoriteVideos = () => {
+  //   fetch(`http://localhost:8080/users/${userId}/favorites`, {
+  //     method: "GET",
+  //     headers: { Authorization: accessToken },
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       throw new Error("Could not get Videos");
+  //     })
+  //     .then((json) => {
+  //       dispatch(user.actions.setFavoriteVideos(json));
+  //       setFavoriteVideos(json);
+  //     });
   // };
 
-  useEffect(getFavoriteVideos, []);
+  //useEffect(getFavoriteVideos, []);
 
+  // get favoritevideos and dispatch to store:
+  useEffect(() => {
+    dispatch(getFavoriteVideos(userId, accessToken));
+  }, []);
+ 
   return (
     <>
       <Container>
@@ -58,7 +61,7 @@ export const UserProfile = () => {
                 <VideoCard
                   key={video._id}
                   {...video}
-                  getFavoriteVideos={getFavoriteVideos}
+                  // getFavoriteVideos={getFavoriteVideos}
                 />
               </Col>
             );
