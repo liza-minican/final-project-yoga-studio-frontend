@@ -78,6 +78,10 @@ export const user = createSlice({
       }
     },
 
+    setFavoriteVideos: (state, action) => {
+      state.userActions.favoriteVideos = action.payload;
+    },
+
     toggleLoggedState: (state, action) => {
       state.login.loggedIn = action.payload;
     },
@@ -92,6 +96,27 @@ export const user = createSlice({
     },
   },
 });
+
+
+// export const getFavoriteVideos = (userId, accessToken) => {
+//   return (dispatch) => {
+//   fetch(`http://localhost:8080/users/${userId}/favorites`, {
+//     method: "GET",
+//     headers: { Authorization: accessToken },
+//   })
+//     .then((res) => {
+//       if (res.ok) {
+//         return res.json();
+//       }
+//       throw new Error("Could not get Videos");
+//     })
+//     .then((json) => {
+//       dispatch(user.actions.setFavoriteVideos(json));
+//     });
+// };
+// }
+
+//useEffect(getFavoriteVideos, []);
 
 // export const logout = () => {
 //   return (dispatch) => {
@@ -112,6 +137,5 @@ export const user = createSlice({
 //     dispatch(user.actions.setUserName({ userName: '' }))
 //     dispatch(user.actions.setEmail({ email: '' }))
 //     localStorage.clear();
-
 //   };
 // };

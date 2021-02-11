@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+//import { getFavoriteVideos } from "../reducers/user";
 
 import styled from "styled-components";
 
@@ -18,6 +19,11 @@ export const Likes = ({ id }) => {
   const userId = useSelector((store) => store.user.login.userId);
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const URL_FAVORITE = `http://localhost:8080/users/${userId}/favorites/${id}`;
+
+//  const getFavorite = () => {
+//    dispatch(getFavoriteVideos(userId, accessToken));
+//    //setFavoriteVideos(json);
+//  };
 
 
   const handleSave = () => {
@@ -39,7 +45,7 @@ export const Likes = ({ id }) => {
       })
       .then((json) => {
         dispatch(user.actions.addFavoriteVideos(json));
-        // getFavoriteVideos(userId, accessToken);
+        //getFavoriteVideos(userId, accessToken);
       });
   };
 

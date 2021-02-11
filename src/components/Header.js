@@ -38,23 +38,23 @@ export const Header = () => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="navbar-auto">
           <NavLinks>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link eventKey="1" as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/about">
+            <Nav.Link eventKey="2" as={Link} to="/about">
               About
             </Nav.Link>
-            <Nav.Link as={Link} to="/videos">
+            <Nav.Link eventKey="3" as={Link} to="/videos">
               Videos
             </Nav.Link>
             {accessToken && (
               <>
-                <Nav.Link as={Link} to="/" onClick={handleLogOut}>
+                <Nav.Link eventKey="4" as={Link} to="/" onClick={handleLogOut}>
                   Logout
                 </Nav.Link>
                 <LoggedInWrapper>
                   <Text>Welcome {userName}</Text>
-                  <Nav.Link as={Link} to="/profile">
+                  <Nav.Link eventKey="5" as={Link} to="/profile">
                     Go to favorites
                   </Nav.Link>
                 </LoggedInWrapper>
@@ -62,10 +62,10 @@ export const Header = () => {
             )}
             {!accessToken && (
               <>
-                <Nav.Link as={Link} to="/sessions">
+                <Nav.Link eventKey="4" as={Link} to="/sessions">
                   Log in
                 </Nav.Link>
-                <Nav.Link as={Link} to="/users">
+                <Nav.Link eventKey="5" as={Link} to="/users">
                   Sign up
                 </Nav.Link>
               </>
