@@ -5,6 +5,10 @@ export const videoList = createSlice({
   initialState: {
     videos: JSON.parse(localStorage.getItem("videos")) || [],
     errorMessage: "",
+    filters: {
+      category: null,
+      length: null,
+    },
   },
   reducers: {
     setVideosList: (state, action) => {
@@ -17,5 +21,23 @@ export const videoList = createSlice({
       const { errorMessage } = action.payload;
       state.errorMessage = errorMessage;
     },
+    setCategory: (state, action) => {
+      state.filters.category = action.payload;
+    },
   },
 });
+
+export const getVideos = () => {
+  return (dispatch) => {
+    fetch("http://localhost:8080/videos")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Could not get Videos");
+      })
+      .then((json) => {
+        dispatch(videoList.actions.setVideosList(json));
+      });
+  };
+};

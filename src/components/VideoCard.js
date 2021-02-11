@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
   const accessToken = useSelector((store) => store.user.login.accessToken);
-
+  const videos = useSelector((store) => store.user.userActions.favoriteVideos);
   return (
     <>
       {accessToken && (

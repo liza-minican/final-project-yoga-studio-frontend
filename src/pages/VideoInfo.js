@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
+import { Likes } from "components/Likes.js";
 import previous from "assets/previous.png";
 
 import styled from "styled-components";
@@ -11,7 +13,7 @@ import styled from "styled-components";
 
 export const VideoInfo = () => {
   const { videoId } = useParams();
-  //const accessToken = useSelector((store) => store.user.login.accessToken);
+  const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const [videoInfo, setVideoInfo] = useState({});
 
@@ -30,28 +32,59 @@ export const VideoInfo = () => {
 
   return (
     <>
-      <Link to="/videos" exact="true">
-        <WrapperGoBack>
-          <Icon src={previous} alt="back-arrow" />
-          <p>Back to Videos</p>
-        </WrapperGoBack>
-      </Link>
-      <Wrapper>
-        <Text>{videoInfo.videoName}</Text>
-        <Video>
-          <ReactPlayer
-            url={`${videoInfo.videoUrl}`}
-            alt={videoInfo.videoName}
-            muted="true"
-            controls={false}
-            // width="900px"
-            // height="500px"
-          />
-        </Video>
-        <Text1>Category: {videoInfo.category}</Text1>
-        <Text1>Duration: {videoInfo.length} min</Text1>
-        <Text2>{videoInfo.description}</Text2>
-      </Wrapper>
+      {accessToken && (
+        <>
+          <Link to="/videos" exact="true">
+            <WrapperGoBack>
+              <Icon src={previous} alt="back-arrow" />
+              <p>Back to Videos</p>
+            </WrapperGoBack>
+          </Link>
+          <Wrapper>
+            <Text>{videoInfo.videoName}</Text>
+            <Video>
+              <ReactPlayer
+                url={`${videoInfo.videoUrl}`}
+                alt={videoInfo.videoName}
+                muted="true"
+                controls={false}
+                // width="900px"
+                // height="500px"
+              />
+            </Video>
+            <Likes id={videoInfo._id} />
+            <Text1>Category: {videoInfo.category}</Text1>
+            <Text1>Duration: {videoInfo.length} min</Text1>
+            <Text2>{videoInfo.description}</Text2>
+          </Wrapper>
+        </>
+      )}
+      {!accessToken && (
+        <>
+          <Link to="/videos" exact="true">
+            <WrapperGoBack>
+              <Icon src={previous} alt="back-arrow" />
+              <p>Back to Videos</p>
+            </WrapperGoBack>
+          </Link>
+          <Wrapper>
+            <Text>{videoInfo.videoName}</Text>
+            <Video>
+              <ReactPlayer
+                url={`${videoInfo.videoUrl}`}
+                alt={videoInfo.videoName}
+                muted="true"
+                controls={false}
+                // width="900px"
+                // height="500px"
+              />
+            </Video>
+            <Text1>Category: {videoInfo.category}</Text1>
+            <Text1>Duration: {videoInfo.length} min</Text1>
+            <Text2>{videoInfo.description}</Text2>
+          </Wrapper>
+        </>
+      )}
     </>
   );
 };
@@ -77,7 +110,7 @@ const Wrapper = styled.div`
 `;
 
 const WrapperGoBack = styled.div`
-margin:20px;
+  margin: 20px;
   p {
     font-family: "Cormorant";
   }

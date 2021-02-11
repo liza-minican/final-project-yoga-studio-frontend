@@ -16,8 +16,12 @@ import { UserProfile } from "./pages/UserProfile";
 import { NotFound } from "./pages/NotFound";
 
 import { user } from "./reducers/user";
+import { videoList } from "./reducers/videoList";
 
-const reducer = combineReducers({ user: user.reducer });
+const reducer = combineReducers({
+  user: user.reducer,
+  videoList: videoList.reducer,
+});
 const store = configureStore({ reducer });
 
 export const App = () => {
