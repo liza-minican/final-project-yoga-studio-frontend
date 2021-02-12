@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+//import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -13,14 +14,13 @@ import { videoList } from "../reducers/videoList";
 import { getVideos } from "../reducers/videoList";
 
 export const VideoList = () => {
-  //const VIDEO_COLLECTION_URL = "http://localhost:8080/videos";
   const dispatch = useDispatch();
   const videos = useSelector((store) => store.videoList.videos);
   const filters = useSelector((store) => store.videoList.filters);
-  console.log(filters);
+
   useEffect(() => {
     dispatch(getVideos());
-  }, []);
+  }, [dispatch]);
 
   const filteredVideos = videos.filter((item) => {
     if (filters.category) {
@@ -49,8 +49,7 @@ export const VideoList = () => {
             <Form
               value={filters.category}
               onChange={(event) =>
-                dispatch(videoList.actions.setCategory(event.target.value))
-              }
+                dispatch(videoList.actions.setCategory(event.target.value))}
             >
               <option value="">Choose level</option>
               <option value="Advanced">Advanced</option>
@@ -72,7 +71,6 @@ export const VideoList = () => {
                 <VideoCard
                   key={video._id}
                   {...video}
-                  //getVideos={getVideos}
                 />
               </Col>
             );
