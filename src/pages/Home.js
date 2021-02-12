@@ -18,13 +18,17 @@ export const Home = () => {
         style={{ backgroundImage: `url(${bgimage})`, backgroundSize: "cover" }}
       >
         <Container>
-          <Text1>Yoga Benefits</Text1>
-          <TextWrapper>
-            <Text>Welcome to our online yoga space. Enjoy your time here!</Text>
-          </TextWrapper>
-          <Link to="/users">
-            <ButtonWrapper>Get started</ButtonWrapper>
-          </Link>
+          <WrapperWelcomeText>
+            <Text1>Yoga Benefits</Text1>
+            <TextWrapper>
+              <Text>
+                Welcome to our online yoga space. Enjoy your time here!
+              </Text>
+            </TextWrapper>
+            <Link to="/users">
+              <ButtonWrapper>Get started</ButtonWrapper>
+            </Link>
+          </WrapperWelcomeText>
         </Container>
       </Jumbotron>
       <Container>
@@ -61,6 +65,12 @@ export const Home = () => {
   );
 };
 
+const WrapperWelcomeText = styled.div`
+  @media (max-width: 400px) {
+    margin-top: -40px;
+  }
+`;
+
 const Image = styled.img`
   width: 100px;
   height: 100px;
@@ -84,9 +94,9 @@ const Text = styled.p`
   opacity: 2 !important;
 `;
 const TextWrapper = styled.div`
-  background-color:#d7e9dc;
-  opacity:0.7;
-  width:40%;
+  background-color: #d7e9dc;
+  opacity: 0.7;
+  width: 40%;
 `;
 
 const Text1 = styled.h1`
@@ -109,7 +119,7 @@ const ButtonWrapper = styled.button`
   transition: all 0.4s ease 0s;
   border: none;
   background-color: #e6b451;
-  //background-color: #efce8f;
+
   color: black;
   padding: 3px;
   border-radius: 1px;

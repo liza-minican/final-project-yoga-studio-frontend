@@ -155,20 +155,3 @@ const Form = styled.select`
   }
 `;
 
-/* width: 100%;
-  height: 50px;
-  font-size: 100%;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 0;
-  background-color: #c0392b;
-  border: none;
-  border-bottom: 2px solid #962d22;
-  color: white;
-  appearance: none;
-  padding: 10px;
-  padding-right: 38px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  transition: color 0.3s ease, background-color 0.3s ease,
-    border-bottom-color 0.3s ease; */
