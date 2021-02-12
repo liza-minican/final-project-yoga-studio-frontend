@@ -45,8 +45,8 @@ export const UserProfile = () => {
   // get favoritevideos and dispatch to store:
   useEffect(() => {
     dispatch(getFavoriteVideos(userId, accessToken));
-  }, []);
- 
+  }, [dispatch, userId, accessToken]);
+
   return (
     <>
       <Container>
