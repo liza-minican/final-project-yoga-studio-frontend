@@ -34,10 +34,8 @@ export const VideoCard = ({ getVideos, getFavoriteVideos, ...video }) => {
 };
 
 const Video = styled.div`
-  //overflow: hidden;
   position: relative;
   padding-top: 56.25%;
-  //width: 100%;
   margin-bottom: 10px;
 
   .react-player {
@@ -45,20 +43,6 @@ const Video = styled.div`
     top: 0;
     left: 0;
   }
-
-  /* after {
-    padding-top: 56.25%;
-    display: block;
-    content: "";
-  } */
-
-  /* iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-  } */
 `;
 
 const Text = styled.p`

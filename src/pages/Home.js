@@ -108,7 +108,8 @@ const ButtonWrapper = styled.button`
   display: inline-block;
   transition: all 0.4s ease 0s;
   border: none;
-  background-color: #efce8f;
+  background-color: #e6b451;
+  //background-color: #efce8f;
   color: black;
   padding: 3px;
   border-radius: 1px;
