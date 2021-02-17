@@ -3,62 +3,11 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-import { Likes } from "components/Likes.js";
+import { Favorites } from "components/Favorites.js";
 import previous from "assets/previous.png";
 
 import styled from "styled-components";
 
-//fetch according to video id
-//this is the page that shows one video with its details
-
-export const VideoInfo = () => {
-  const { videoId } = useParams();
-  const accessToken = useSelector((store) => store.user.login.accessToken);
-
-  const [videoInfo, setVideoInfo] = useState({});
-
-  const VIDEO_URL = `http://localhost:8080/videos/${videoId}`;
-
-  const getVideoInfo = () => {
-    fetch(VIDEO_URL)
-      .then((response) => response.json())
-      .then((json) => {
-        setVideoInfo(json);
-      });
-  };
-
-  useEffect(getVideoInfo, []);
-  console.log(getVideoInfo);
-
-  return (
-    <>
-      <Link to="/videos" exact="true">
-        <WrapperGoBack>
-          <Icon src={previous} alt="back-arrow" />
-          <p>Back to Videos</p>
-        </WrapperGoBack>
-      </Link>
-      <Wrapper>
-        <Text>{videoInfo.videoName}</Text>
-        <Video>
-          <ReactPlayer
-            className="react-player"
-            url={`${videoInfo.videoUrl}`}
-            alt={videoInfo.videoName}
-            muted="true"
-            controls={false}
-            width="100%"
-            height="100%"
-          />
-        </Video>
-        {accessToken && <Likes id={videoInfo._id} />}
-        <Text1>Category: {videoInfo.category}</Text1>
-        <Text1>Duration: {videoInfo.length} min</Text1>
-        <Text2>{videoInfo.description}</Text2>
-      </Wrapper>
-    </>
-  );
-};
 
 const Wrapper = styled.div`
   display: flex;
@@ -118,3 +67,55 @@ const Text2 = styled.p`
   font-size: 18px;
   font-family: "Cormorant";
 `;
+
+//fetch according to video id
+//this is the page that shows one video with its details
+
+export const VideoInfo = () => {
+  const { videoId } = useParams();
+  const accessToken = useSelector((store) => store.user.login.accessToken);
+
+  const [videoInfo, setVideoInfo] = useState({});
+
+  const VIDEO_URL = `http://localhost:8080/videos/${videoId}`;
+
+  const getVideoInfo = () => {
+    fetch(VIDEO_URL)
+      .then((response) => response.json())
+      .then((json) => {
+        setVideoInfo(json);
+      });
+  };
+
+  useEffect(getVideoInfo, []);
+  console.log(getVideoInfo);
+
+  return (
+    <>
+      <Link to="/videos" exact="true">
+        <WrapperGoBack>
+          <Icon src={previous} alt="back-arrow" />
+          <p>Back to Videos</p>
+        </WrapperGoBack>
+      </Link>
+      <Wrapper>
+        <Text>{videoInfo.videoName}</Text>
+        <Video>
+          <ReactPlayer
+            className="react-player"
+            url={`${videoInfo.videoUrl}`}
+            alt={videoInfo.videoName}
+            muted="true"
+            controls={false}
+            width="100%"
+            height="100%"
+          />
+        </Video>
+        {accessToken && <Favorites id={videoInfo._id} />}
+        <Text1>Category: {videoInfo.category}</Text1>
+        <Text1>Duration: {videoInfo.length} min</Text1>
+        <Text2>{videoInfo.description}</Text2>
+      </Wrapper>
+    </>
+  );
+};

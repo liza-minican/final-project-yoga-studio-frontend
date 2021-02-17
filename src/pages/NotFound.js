@@ -1,6 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+const NotFoundContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+  width: auto;
+  margin-top: 150px;
+`;
+
 export const NotFound = () => {
   return (
     <NotFoundContainer>
@@ -10,11 +19,3 @@ export const NotFound = () => {
   );
 };
 
-const NotFoundContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 200px;
-  width: auto;
-  margin-top: 150px;
-`;

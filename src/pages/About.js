@@ -7,35 +7,6 @@ import yoga from "assets/yoga.jpg";
 
 import styled from "styled-components";
 
-export const About = () => {
-  return (
-    <>
-      <Container>
-        <WrapperAbout>
-          <Row>
-            <Col xs="12" sm="12" md="6" lg="6" xl="6">
-              <TextWrapper>
-                <Text>
-                  Yoga Benfits is a yoga studio online. It was created to help
-                  you get stronger,calmer and more focused in the comfort of
-                  your own home. Choose videos that you like, breath, enjoy the
-                  scenery and high quality content, imagine you are there, you
-                  are a part of nature. Let your inner light shine. Yoga
-                  Benefits will be always there when you need it, any time of
-                  the day, any day!
-                </Text>
-              </TextWrapper>
-            </Col>
-            <Col xs="12" sm="12" md="6" lg="6" xl="6">
-              <Image src={yoga} alt="yoga-image" />
-            </Col>
-          </Row>
-        </WrapperAbout>
-      </Container>
-    </>
-  );
-};
-
 const Image = styled.img`
   position: relative;
   overflow: visible;
@@ -82,3 +53,32 @@ const WrapperAbout = styled.div`
     margin-bottom: 50px;
   }
 `;
+
+export const About = () => {
+  return (
+    <>
+      <Container>
+        <WrapperAbout>
+          <Row>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <TextWrapper>
+                <Text>
+                  Yoga Benfits is a yoga studio online. It was created to help
+                  you get stronger,calmer and more focused in the comfort of
+                  your own home. Choose videos that you like, breath, enjoy the
+                  scenery and high quality content, imagine you are there, you
+                  are a part of nature. Let your inner light shine. Yoga
+                  Benefits will be always there when you need it, any time of
+                  the day, any day!
+                </Text>
+              </TextWrapper>
+            </Col>
+            <Col xs="12" sm="12" md="6" lg="6" xl="6">
+              <Image src={yoga} alt="yoga-image" />
+            </Col>
+          </Row>
+        </WrapperAbout>
+      </Container>
+    </>
+  );
+};

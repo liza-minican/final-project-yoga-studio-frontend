@@ -10,8 +10,18 @@ import { VideoCard } from "components/VideoCard";
 
 import styled from "styled-components";
 
-//import { user} from "../reducers/user";
 import { getFavoriteVideos } from "../reducers/user";
+
+const TextWrapper = styled.div`
+  margin-top: 30px;
+  h1 {
+    font-family: "Cormorant";
+  }
+  p {
+    font-family: "Cormorant";
+    font-size: 18px;
+  }
+`;
 
 export const UserProfile = () => {
   const dispatch = useDispatch();
@@ -21,26 +31,6 @@ export const UserProfile = () => {
   const favoriteVideos = useSelector(
     (store) => store.user.userActions.favoriteVideos
   );
-  //const [favoriteVideos, setFavoriteVideos] = useState([]);
-
-  // const getFavoriteVideos = () => {
-  //   fetch(`http://localhost:8080/users/${userId}/favorites`, {
-  //     method: "GET",
-  //     headers: { Authorization: accessToken },
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       throw new Error("Could not get Videos");
-  //     })
-  //     .then((json) => {
-  //       dispatch(user.actions.setFavoriteVideos(json));
-  //       setFavoriteVideos(json);
-  //     });
-  // };
-
-  //useEffect(getFavoriteVideos, []);
 
   // get favoritevideos and dispatch to store:
   useEffect(() => {
@@ -61,7 +51,6 @@ export const UserProfile = () => {
                 <VideoCard
                   key={video._id}
                   {...video}
-                  // getFavoriteVideos={getFavoriteVideos}
                 />
               </Col>
             );
@@ -71,13 +60,3 @@ export const UserProfile = () => {
     </>
   );
 };
-const TextWrapper = styled.div`
-  margin-top: 30px;
-  h1 {
-    font-family: "Cormorant";
-  }
-  p {
-    font-family: "Cormorant";
-    font-size: 18px;
-  }
-`;

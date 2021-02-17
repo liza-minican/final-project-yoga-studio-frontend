@@ -43,34 +43,6 @@ export const user = createSlice({
       localStorage.setItem("email", email);
     },
 
-    //alternative to add and remove videos
-
-    // addFavoriteVideos: (state, action) => {
-    //   const videoExists = state.userActions.favoriteVideos.find(
-    //     (video) => video._id === action.payload._id
-    //   );
-    //   if (!videoExists) {
-    //     const newArray = state.userActions.favoriteVideos.slice();
-    //     newArray.push({ ...action.payload });
-    //     state.userActions.favoriteVideos = newArray;
-    //   } else {
-    //     videoExists.quantity += 0;
-    //   }
-    // },
-
-    // removeFavoriteVideos: (state, action) => {
-    //   const videoExists = state.userActions.favoriteVideos.find(
-    //     (video) => video._id === action.payload._id
-    //   );
-    //   if (videoExists && videoExists.quantity === 1) {
-    //     state.userActions.favoriteVideos = state.userActions.favoriteVideos.filter(
-    //       (video) => video._id !== action.payload._id
-    //     );
-    //   } else if (videoExists) {
-    //     videoExists.quantity -= 1;
-    //   }
-    // },
-
     setFavoriteVideos: (state, action) => {
       state.userActions.favoriteVideos = action.payload;
     },
@@ -155,25 +127,3 @@ export const removeFavoriteVideos = (userId, accessToken, id) => {
       });
   };
 };
-
-// export const logout = () => {
-//   return (dispatch) => {
-//fetch("http://localhost:8080/users/logout", {
-//       method: 'POST',
-//       headers: { Authorization: accessToken }
-//     })
-//  .then((res) => {
-//         if (res.ok) {
-//           return res.json()
-//         }
-//         throw new Error('Failed to log out')
-//       })
-//          .catch((err) => console.log(err));
-//       })
-//     dispatch(user.actions.setUserId({ userId: 0 }));
-//     dispatch(user.actions.setAccessToken({ accessToken: null }));
-//     dispatch(user.actions.setUserName({ userName: '' }))
-//     dispatch(user.actions.setEmail({ email: '' }))
-//     localStorage.clear();
-//   };
-// };

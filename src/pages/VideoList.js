@@ -12,77 +12,6 @@ import { VideoCard } from "components/VideoCard";
 import { videoList } from "../reducers/videoList";
 import { getVideos } from "../reducers/videoList";
 
-export const VideoList = () => {
-  //const VIDEO_COLLECTION_URL = "http://localhost:8080/videos";
-  const dispatch = useDispatch();
-  const videos = useSelector((store) => store.videoList.videos);
-  const filters = useSelector((store) => store.videoList.filters);
-  console.log(filters);
-  useEffect(() => {
-    dispatch(getVideos());
-  }, [dispatch]);
-
-  const filteredVideos = videos.filter((item) => {
-    if (filters.category) {
-      return item.category === filters.category;
-    }
-    return true;
-  });
-
-  return (
-    <>
-      {/* <select
-        value={filters.length}
-        onChange={(event) =>
-          dispatch(videoList.actions.setLength(event.target.value))
-        }
-      >
-        <option value={null}>Choose duration</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-      </select> */}
-      <Container>
-        <WrapperMain class="demo">
-          <WrapperForm class="dropdown-container">
-            <Form
-              value={filters.category}
-              onChange={(event) =>
-                dispatch(videoList.actions.setCategory(event.target.value))
-              }
-            >
-              <option value="">Choose level</option>
-              <option value="Advanced">Advanced</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Beginner">Beginner</option>
-            </Form>
-          </WrapperForm>
-        </WrapperMain>
-        <TextWrapper>
-          <h1>Video collection</h1>
-          <p>
-            Enjoy our cherry picked video colecction and get stronger every day!
-          </p>
-        </TextWrapper>
-        <Row>
-          {filteredVideos.map((video) => {
-            return (
-              <Col xs="12" sm="12" md="6" lg="4" xl="4">
-                <VideoCard
-                  key={video._id}
-                  {...video}
-                  //getVideos={getVideos}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
-    </>
-  );
-};
-
 const TextWrapper = styled.div`
   margin-top: 30px;
   h1 {
@@ -99,7 +28,6 @@ const WrapperMain = styled.div`
 
 const WrapperForm = styled.div`
   width: 150px;
-  //margin: 100px auto;
   position: relative;
 `;
 
@@ -137,13 +65,11 @@ const Form = styled.select`
 
   &hover {
     border-color: yellow;
-    //outline: none;
   }
 
   &focus {
     border-color: yellow;
     box-shadow: 0 0 0 3px -moz-mac-focusring;
-    //outline: none;
   }
   option {
     color: black;
@@ -155,3 +81,56 @@ const Form = styled.select`
   }
 `;
 
+export const VideoList = () => {
+  const dispatch = useDispatch();
+  const videos = useSelector((store) => store.videoList.videos);
+  const filters = useSelector((store) => store.videoList.filters);
+  console.log(filters);
+  useEffect(() => {
+    dispatch(getVideos());
+  }, [dispatch]);
+
+  const filteredVideos = videos.filter((item) => {
+    if (filters.category) {
+      return item.category === filters.category;
+    }
+    return true;
+  });
+
+  return (
+    <>
+      <Container>
+        <WrapperMain class="demo">
+          <WrapperForm class="dropdown-container">
+            <Form
+              value={filters.category}
+              onChange={(event) =>
+                dispatch(videoList.actions.setCategory(event.target.value))
+              }
+            >
+              <option value="">Choose level</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Beginner">Beginner</option>
+            </Form>
+          </WrapperForm>
+        </WrapperMain>
+        <TextWrapper>
+          <h1>Video collection</h1>
+          <p>
+            Enjoy our cherry picked video colecction and get stronger every day!
+          </p>
+        </TextWrapper>
+        <Row>
+          {filteredVideos.map((video) => {
+            return (
+              <Col xs="12" sm="12" md="6" lg="4" xl="4">
+                <VideoCard key={video._id} {...video} />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+    </>
+  );
+};

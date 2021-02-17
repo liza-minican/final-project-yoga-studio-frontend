@@ -1,14 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-export const SubmitButton = ({ title, onClick, onSubmit }) => {
-  return (
-    <MainContainer onSubmit={onSubmit} onClick={onClick}>
-      <TextField>{title}</TextField>
-    </MainContainer>
-  );
-};
-
 const MainContainer = styled.button`
   display: flex;
   flex-direction: column;
@@ -44,3 +36,11 @@ const TextField = styled.p`
     color: #d2c5ab;
   }
 `;
+
+export const SubmitButton = ({ title, onClick, onSubmit }) => {
+  return (
+    <MainContainer onSubmit={onSubmit} onClick={onClick}>
+      <TextField>{title}</TextField>
+    </MainContainer>
+  );
+};

@@ -10,11 +10,66 @@ import styled from "styled-components";
 import signup1 from "assets/signup1.jpg";
 import signup2 from "assets/signup2.jpg";
 
-
 import { SubmitButton } from "components/SubmitButton";
 import { InputField } from "components/InputField";
 import { UserProfile } from "./UserProfile";
 import { user } from "../reducers/user";
+
+const Image = styled.img`
+  width: 400px;
+  height: auto;
+  margin-top: 30px;
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 100px auto;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: none;
+  background-color: whitesmoke;
+  @media (max-width: 950px) {
+    margin: 30px auto;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  @media (max-width: 660px) {
+    margin: 30px auto;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+`;
+const Text = styled.p`
+  display: flex;
+  padding: 10px;
+  font-size: 20px;
+  flex-direction: column;
+  color: black;
+  font-weight: bold;
+  font-family: "Xanh Mono", monospace;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 30px;
+  letter-spacing: 2px;
+  @media (max-width: 950px) {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+  @media (max-width: 660px) {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+`;
 
 const SIGNUP = "http://localhost:8080/users";
 
@@ -126,67 +181,3 @@ export const SignUp = () => {
     </>
   );
 };
-
-// const Image = styled.main`
-//   background-image: url("${process.env.PUBLIC_URL + "/flower.jpg"}");
-//   position: fixed;
-//   width: 100%;
-//   height: 100%;
-//   background-size: cover;
-// `;
-
-const Image = styled.img`
-  width: 400px;
-  height: auto;
-  margin-top: 30px;
-  @media (max-width: 900px) {
-    display: none;
-  }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: 100px auto;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  border-radius: none;
-  background-color: whitesmoke;
-  @media (max-width: 950px) {
-    margin: 30px auto;
-    width: 80%;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
-  @media (max-width: 660px) {
-    margin: 30px auto;
-    width: 80%;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
-`;
-const Text = styled.p`
-  display: flex;
-  padding: 10px;
-  font-size: 20px;
-  flex-direction: column;
-  color: black;
-  font-weight: bold;
-  font-family: "Xanh Mono", monospace;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  text-transform: uppercase;
-  margin-top: 30px;
-  letter-spacing: 2px;
-  @media (max-width: 950px) {
-    font-size: 17px;
-    margin-top: 10px;
-  }
-  @media (max-width: 660px) {
-    font-size: 17px;
-    margin-top: 10px;
-  }
-`;

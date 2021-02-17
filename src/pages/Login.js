@@ -5,13 +5,68 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import styled from "styled-components";
-
 import loginImage from "assets/login.jpg";
 
 import { SubmitButton } from "components/SubmitButton";
 import { InputField } from "components/InputField";
 import { UserProfile } from "./UserProfile";
 import { user } from "../reducers/user";
+
+const Image = styled.img`
+  width: 500px;
+  height: auto;
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-bottom: 30px;
+  margin: 100px auto;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: none;
+  background-color: whitesmoke;
+  @media (max-width: 950px) {
+    margin: 30px auto;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  @media (max-width: 660px) {
+    margin: 30px auto;
+    width: 80%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+`;
+const Text = styled.p`
+  display: flex;
+  padding: 10px;
+  font-size: 20px;
+  flex-direction: column;
+  color: black;
+  font-weight: bold;
+  font-family: "Xanh Mono", monospace;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 30px;
+  letter-spacing: 2px;
+  @media (max-width: 950px) {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+  @media (max-width: 660px) {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+`;
 
 const LOGIN = "http://localhost:8080/sessions";
 
@@ -114,58 +169,3 @@ export const Login = () => {
   );
 };
 
-const Image = styled.img`
-  width: 500px;
-  height: auto;
-  @media (max-width: 900px) {
-    display: none;
-  }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin-bottom: 30px;
-  margin: 100px auto;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  border-radius: none;
-  background-color: whitesmoke;
-  @media (max-width: 950px) {
-    margin: 30px auto;
-    width: 80%;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
-  @media (max-width: 660px) {
-    margin: 30px auto;
-    width: 80%;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
-`;
-const Text = styled.p`
-  display: flex;
-  padding: 10px;
-  font-size: 20px;
-  flex-direction: column;
-  color: black;
-  font-weight: bold;
-  font-family: "Xanh Mono", monospace;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  text-transform: uppercase;
-  margin-top: 30px;
-  letter-spacing: 2px;
-  @media (max-width: 950px) {
-    font-size: 17px;
-    margin-top: 10px;
-  }
-  @media (max-width: 660px) {
-    font-size: 17px;
-    margin-top: 10px;
-  }
-`;
