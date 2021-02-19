@@ -1,19 +1,23 @@
-# Technigo React Starter App
+Final Project Frontend: Online Yoga Studio
 
-This app has been generated using `create-react-app`, then cleaned up a little so we have a project with just the elements we need to get started.
+This project is an online yoga studio with functioning Sign Up, Sign In modules.
+When you go to videos you can see a video collection, you can filter videos by category, in the future filtering by length will be added.
+If you are Signed In you can add or remove videos to/from your favorites.
+You can also access your favorite videos directly when you are Signed In.
+All the videos were posted through Postman using endpoints provided by the backend of the project. In the future there will be an admin panel where you could post/delete/update videos if you have admin rights.
 
-Add components in the `src` folder and use them in `src/app.js` to get started.
+The process
+Design sketch in Figma
+Working on planning the structure, necessary pages and components
+Post data to the Api working with local host
+Developing endpoints at the backend
+Developing frontend logic using React and Redux
+Styling with styled components and React Bootstrap
 
-## Usage
+*React+JSX *Redux *Styled components *API *React Player *React Bootstrap
 
-1. On GitHub, click the 'use this template' button to create a new repo on your account
-1. Clone the new repo to your computer
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+Challenges to solve
+I am planning to add filtering by video length, rating and a functionality for the admin panel
 
-Alternatively, if you don't want a new git repo on your account;
-
-1. Download & extract the [latest release](https://github.com/Technigo/react-starter/releases/latest) from GitHub
-1. Open the directory in the terminal: `cd /path/to/react-starter`
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+View it live
+https://yoga-benefits-studio.netlify.app/videos
