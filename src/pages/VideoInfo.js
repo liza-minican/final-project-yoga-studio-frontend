@@ -77,7 +77,7 @@ export const VideoInfo = () => {
 
   const [videoInfo, setVideoInfo] = useState({});
 
-  const VIDEO_URL = `http://localhost:8080/videos/${videoId}`;
+  const VIDEO_URL = `https://yoga-studio-liza.herokuapp.com/videos/${videoId}`;
 
   const getVideoInfo = () => {
     fetch(VIDEO_URL)

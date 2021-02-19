@@ -71,7 +71,7 @@ const Text = styled.p`
   }
 `;
 
-const SIGNUP = "http://localhost:8080/users";
+const SIGNUP = "https://yoga-studio-liza.herokuapp.com/users";
 
 export const SignUp = () => {
   const dispatch = useDispatch();

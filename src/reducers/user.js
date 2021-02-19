@@ -64,7 +64,7 @@ export const user = createSlice({
 
 export const getFavoriteVideos = (userId, accessToken) => {
   return (dispatch) => {
-    fetch(`http://localhost:8080/users/${userId}/favorites`, {
+    fetch(`https://yoga-studio-liza.herokuapp.com/users/${userId}/favorites`, {
       method: "GET",
       headers: { Authorization: accessToken },
     })
@@ -82,14 +82,17 @@ export const getFavoriteVideos = (userId, accessToken) => {
 // add fav video
 export const addFavoriteVideos = (userId, accessToken, id) => {
   return (dispatch) => {
-    fetch(`http://localhost:8080/users/${userId}/favorites/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({ _id: id }),
-      headers: {
-        Authorization: accessToken,
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://yoga-studio-liza.herokuapp.com/users/${userId}/favorites/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({ _id: id }),
+        headers: {
+          Authorization: accessToken,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -106,14 +109,17 @@ export const addFavoriteVideos = (userId, accessToken, id) => {
 // remove fav video
 export const removeFavoriteVideos = (userId, accessToken, id) => {
   return (dispatch) => {
-    fetch(`http://localhost:8080/users/${userId}/favorites/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify({ _id: id }),
-      headers: {
-        Authorization: accessToken,
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://yoga-studio-liza.herokuapp.com/users/${userId}/favorites/${id}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({ _id: id }),
+        headers: {
+          Authorization: accessToken,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => {
         if (res.ok) {
           return res.json();

@@ -32,7 +32,9 @@ export const videoList = createSlice({
 
 export const getVideos = () => {
   return (dispatch) => {
-    fetch("http://localhost:8080/videos")
+    fetch(
+      "https://yoga-studio-liza.herokuapp.com/videos"
+    )
       .then((res) => {
         if (res.ok) {
           return res.json();
